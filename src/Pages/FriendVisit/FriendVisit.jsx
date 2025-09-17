@@ -9,7 +9,7 @@ import { Message, Person } from '@mui/icons-material'
 export default function FriendVisit() {
   const { id } = useParams();
   const userPosts = Posts.filter((p) => p.userId === Number(id));
-  const UserInfo = Users.find((us) => us.id === Number(id))
+  const FriendInfo = Users.find((us) => us.id === Number(id))
 
   return (
     <> 
@@ -18,7 +18,7 @@ export default function FriendVisit() {
         <div className="friendVisitTop">
             <div className="friendVisitSub">
                 <img 
-                src="/assets/Person/Person1.jpg" 
+                src={FriendInfo.profilePicture}
                 alt=""
                 className="friendVisitSubImg"
                 />
@@ -26,14 +26,14 @@ export default function FriendVisit() {
             <div className="friendVisitMain">
                 <div className="friendVisitMainLeft">
                     <img
-                        src="/assets/Person/Person1.jpg" 
+                        src={FriendInfo.profilePicture} 
                         alt=""
                         className="friendVisitMainImg"
                     />
                 </div>
                 <div className="friendVisitMainRight">
                     <span className="friendVisitMainRightUserName">
-                    {UserInfo.username}
+                    {FriendInfo.fullname}
                     </span>
                 </div>
                 <div className="friendVisitMainBtns">
@@ -52,13 +52,13 @@ export default function FriendVisit() {
             <div className="friendVisitBottomLeftTop">
               <h3 className="titlefriendVisitText">Giới thiệu</h3>
               <div className="bio">
-                Xin chào các bạn.
+                {FriendInfo.desc}
               </div>
             </div>
 
             <div className="friendVisitBottomLeftBottom">
               <h3 className="titlefriendVisitText">Bạn bè</h3>
-              <ListFriend />
+              <ListFriend id={id}/>
             </div>
           </div>
 

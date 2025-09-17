@@ -1,29 +1,39 @@
 import './ListFriend.css'
 import { Users } from '../../Data'
+import { Link } from 'react-router-dom';
+
 export default function ListFriend( {id} ) {
-    const UsersInfo = Users.find((us) => us.id === Number(id));
-    const List =  UsersInfo?.friends || [];
+    const currentUser = Users.find((us) => us.id === Number(id));
+    const UserLogin = Number(localStorage.getItem("UserId"));
+    const List =  currentUser?.friends || [];
     const ListFriend = Users.filter(
         (userFriend) => List.includes(userFriend.id)
     );
-
+ 
     return (
         <div className="ListFriends">
             {ListFriend.length > 0 ? (
                 ListFriend.map((friend) => (
                     <div className="ListFriend" key={friend.id}>
                         <div className="FriendImg">
-                            <img 
-                                src={friend.profilePicture}
-                                alt=""
-                                className="FriendAvt"
-                            />
+                            <Link 
+                                to={UserLogin === friend.id ? `/profile/${friend.id}` : `/visitProfile/${friend.id}`} className="noLinkStyle"
+                            >
+                                <img 
+                                    src={friend.profilePicture}
+                                    alt=""
+                                    className="FriendAvt"
+                                />
+                            </Link>
                         </div>
 
                         <div className="FriendName">
-                            <span className="NickName">
-                                {friend.username}
-                            </span>
+                            <Link 
+                                to={UserLogin === friend.id ? `/profile/${friend.id}` : `/visitProfile/${friend.id}`} className="noLinkStyle">
+                                <span className="NickName">
+                                    {friend.fullname}
+                                </span>
+                            </Link>
                         </div>
                     </div>
                 ))

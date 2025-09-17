@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function Share() {
     const userId = localStorage.getItem("UserId");
-    const User = Users.find((us) => us.id === Number(userId));
+    const currentUser = Users.find((us) => us.id === Number(userId));
     
     return (
         <div className="share">
@@ -14,12 +14,12 @@ export default function Share() {
                     <Link to={`/profile/${userId}`}>
                         <img 
                             className="shareProfileImg" 
-                            src={User.profilePicture} 
+                            src={currentUser.profilePicture} 
                             alt="" 
                         />
                     </Link>
                     <input 
-                        placeholder={`${User.username}, bạn đang nghĩ gì thế?`} 
+                        placeholder={`${currentUser.fullname}, bạn đang nghĩ gì thế?`} 
                         className="shareInput"
                     />
                     <button className="shareButton">

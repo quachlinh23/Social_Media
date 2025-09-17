@@ -25,8 +25,10 @@ export default function Topbar() {
         <div className="searchbar">
           <Search className="searchIcon" />
           <input
-            placeholder="Search for friend, post or video"
+            id="search"
+            placeholder="Tìm kiếm trên Social Media"
             className="searchInput"
+            name="searchData"
           />
         </div>
       </div>

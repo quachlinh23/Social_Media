@@ -35,10 +35,11 @@
 .postTopLeftContent{
     margin-left: 10px;
 }
+
 .postUsername{
     font-size: 15px;
     font-weight: 500;
-    margin: 0 10px;
+    margin: 0 10px;    
 }
 
 .postUserName:hover, .postDate:hover{
@@ -53,6 +54,21 @@
 .postCenter{
     margin: 20px 0;
 }
+
+.postTopRight{
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.MoreVertIcon:hover,
+.CloseIcon:hover {
+    background-color: #f0f2f5;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
 
 .postImg{
     margin-top: 10px;
@@ -73,6 +89,14 @@
 
 .postHr{
     margin: 5px 0;
+}
+
+.postLikeCounter, .postCommentText, .postCommentText{
+    cursor: pointer;
+}
+
+.postLikeCounter:hover, .postCommentText:hover, .postCommentText:hover{
+    text-decoration: underline;
 }
 
 .postBottomBottom{
