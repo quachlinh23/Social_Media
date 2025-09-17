@@ -1,0 +1,162 @@
+.friendVisit{
+    width: 100%;
+}
+
+.friendVisitTop{
+    width: 100%;
+}
+
+.friendVisitSub{
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.friendVisitSubImg{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.friendVisitMainImg {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    left: 15%;
+    bottom: 250px;
+    transform: translateX(-50%);
+    border: 5px solid white;
+}
+
+.friendVisitMainRightUserName{
+    position: absolute;
+    left: 23%;
+    bottom: 310px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.friendVisitMainBtns{
+    display: flex;
+    position: absolute;
+    right: 7%;
+    bottom: 310px;
+    gap: 10px;
+}
+
+.btnMessage{
+    background-color: #0866ff;
+    border: none;
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.btnMessage:hover{
+    background-color: #0866ff;
+    opacity: 0.8;
+}
+
+.btnFriend{
+    border: none;
+    width: 120px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #361d15;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.btnFriend:hover{
+    opacity: 0.8;
+}
+.friendVisitHr{
+    margin-top: 130px;
+    width: 90%;
+    margin: 130px auto 20px auto; 
+}
+
+.friendVisitBottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+  gap: 2%;
+}
+
+.friendVisitBottomLeft {
+    flex: 4;
+}
+
+.friendVisitBottomRight {
+    width: 90%;
+    flex: 6;
+}
+
+.friendVisitBottomLeftTop {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.titlefriendVisitText {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 22px;
+}
+
+.bio {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+.friendVisitBottomLeftBottom{
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.ListFriends {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.ListFriend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FriendImg img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.FriendName {
+  margin-top: 5px;
+  font-weight: 500;
+  text-align: center;
+}
