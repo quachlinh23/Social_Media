@@ -9,19 +9,16 @@ import ChangePassWord from './Pages/ChangePassWord/ChangePassWord'
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />}/>
-          <Route path='/changePass' element={<ChangePassWord />}/>
-          <Route path='/register' element={<Register />}/>
-          <Route path='/profile/:id' element={<Profile />}/>
-          <Route path='/visitProfile/:id' element={<FriendVisit />}/>
-        </Routes>
-      </BrowserRouter>
-      {/* <Home /> */}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />}/>
+        <Route path='/changePass' element={<ChangePassWord />}/>
+        <Route path='/register' element={<Register />}/>
+        <Route path='/profile/:id' element={<Profile />}/>
+        <Route path='/visitProfile/:id' element={<FriendVisit />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

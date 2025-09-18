@@ -22,9 +22,9 @@ export default function Share() {
                         placeholder={`${currentUser.fullname}, bạn đang nghĩ gì thế?`} 
                         className="shareInput"
                     />
-                    <button className="shareButton">
+                    {/* <button className="shareButton">
                         Đăng
-                    </button>
+                    </button> */}
                 </div>
                 <hr className="shareHr"/>
                 <div className="shareBottom">

@@ -32,20 +32,6 @@
     outline: none;
 }
 
-.shareButton{
-    border: none;
-    padding: 7px;
-    border-radius: 5px;
-    background-color: #1877f2;
-    font-weight: bold;
-    color: white;
-}
-
-.shareButton:hover{
-    background-color: #165ec9;
-    cursor: pointer;
-}
-
 .shareHr{
     margin: 20px;
 }
