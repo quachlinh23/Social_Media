@@ -193,3 +193,54 @@ export const Users = [
     desc: "Thích âm nhạc và chơi guitar.",
   },
 ];
+
+export const Messages = [
+  {
+    id: 1,
+    idSend: 1,      // Anna
+    idReceive: 2,   // John
+    text: "Chào John, bạn khỏe không?",
+  },
+  {
+    id: 2,
+    idSend: 2,      // John
+    idReceive: 1,   // Anna
+    text: "Mình khỏe, cảm ơn Anna! Còn bạn?",
+  },
+  {
+    id: 3,
+    idSend: 3,      // Sarah
+    idReceive: 6,   // David
+    text: "David, hôm nay bạn có chơi game không?",
+  },
+  {
+    id: 4,
+    idSend: 6,
+    idReceive: 3,
+    text: "Có chứ, Sarah! Bạn muốn tham gia không?",
+  },
+  {
+    id: 5,
+    idSend: 5,      // Emily
+    idReceive: 9,   // Olivia
+    text: "Olivia, cuối tuần này đi du lịch nhé?",
+  },
+  {
+    id: 6,
+    idSend: 9,
+    idReceive: 5,
+    text: "Tuyệt vời, Emily! Mình sẵn sàng.",
+  },
+  {
+    id: 7,
+    idSend: 8,
+    idReceive: 10,
+    text: "James, tối nay tập gym cùng nhau không?",
+  },
+  {
+    id: 8,
+    idSend: 10,
+    idReceive: 8,
+    text: "Được thôi, Daniel! Gặp lúc 7h tối nhé.",
+  },
+];

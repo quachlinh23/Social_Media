@@ -1,6 +1,7 @@
 import Online from '../Online/Online'
 import './Rightbar.css'
 
+
 export default function Rightbar() {
   const currentUser = localStorage.getItem("UserId");
   return (
@@ -14,7 +15,9 @@ export default function Rightbar() {
         </div>
         <img src="/assets/Event/QuangCao.jpg" alt="" className="rightbarAd" />
         <h4 className="rightbarTitle">Người liên hệ</h4>
-          <Online idUs={currentUser} />
+          <Online 
+            idUs={currentUser}
+          />
       </div>
     </div>
   )
