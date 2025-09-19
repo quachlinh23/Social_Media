@@ -108,7 +108,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Anna@gmail.com',
     password: '123456',
-    friends: [2, 3, 5],
+    friends: [2, 3, 5, 7],
     desc: "Thích du lịch và chụp ảnh.",
   },
   {
@@ -162,7 +162,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Sophia@gmail.com',
     password: '123456',
-    friends: [5],
+    friends: [5, 1],
     desc: "Đam mê thời trang và thiết kế.",
   },
   {
@@ -192,25 +192,34 @@ export const Users = [
     friends: [8],
     desc: "Thích âm nhạc và chơi guitar.",
   },
+  {
+    id: 11,
+    fullname: "Messi",
+    profilePicture: "/assets/Person/Person1.jpg",
+    email: 'Messi@gmail.com',
+    password: '123456',
+    friends: [8],
+    desc: "Thích âm nhạc và chơi guitar.",
+  },
 ];
 
 export const Messages = [
   {
     id: 1,
-    idSend: 1,      // Anna
-    idReceive: 2,   // John
+    idSend: 1,
+    idReceive: 2,
     text: "Chào John, bạn khỏe không?",
   },
   {
     id: 2,
-    idSend: 2,      // John
-    idReceive: 1,   // Anna
+    idSend: 2,
+    idReceive: 1,
     text: "Mình khỏe, cảm ơn Anna! Còn bạn?",
   },
   {
     id: 3,
-    idSend: 3,      // Sarah
-    idReceive: 6,   // David
+    idSend: 3,
+    idReceive: 6,
     text: "David, hôm nay bạn có chơi game không?",
   },
   {
@@ -221,8 +230,8 @@ export const Messages = [
   },
   {
     id: 5,
-    idSend: 5,      // Emily
-    idReceive: 9,   // Olivia
+    idSend: 5,
+    idReceive: 9,
     text: "Olivia, cuối tuần này đi du lịch nhé?",
   },
   {

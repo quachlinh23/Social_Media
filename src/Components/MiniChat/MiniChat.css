@@ -2,11 +2,12 @@
     position: absolute;
     z-index: 10000;
     right: 10px;
+    bottom: 35px;
 }
 
 .miniChat{
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     cursor: pointer;
 }

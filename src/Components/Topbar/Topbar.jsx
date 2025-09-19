@@ -1,6 +1,6 @@
 import "./Topbar.css";
 import { Search, Person, Message, Notifications } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Users } from "../../Data"
 import { useState } from "react";
 import DropAvatar from "../DropAvatar/DropAvatar";
@@ -10,9 +10,23 @@ export default function Topbar() {
   const userid = localStorage.getItem("UserId");
   const UserInfo = Users.find((us) => us.id === Number(userid));
   const [isDropDown, setIsDropDown] = useState(false);
-
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   function handleDropDown(){
     setIsDropDown(!isDropDown);
+  }
+
+
+  function handleSearch(){
+    if(query.trim !== ""){
+      navigate(`/search?query=${encodeURIComponent(query)}`);
+    }
+  }
+
+  const handelKey = (e) => {
+    if (e.key === "Enter"){
+      handleSearch();
+    }
   }
   return (
     <div className="topbarContainer">
@@ -23,12 +37,18 @@ export default function Topbar() {
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
-          <Search className="searchIcon" />
+          <Search 
+            className="searchIcon" 
+            onClick={handleSearch}
+          />
           <input
             id="search"
             placeholder="Tìm kiếm trên Social Media"
             className="searchInput"
             name="searchData"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handelKey}
           />
         </div>
       </div>

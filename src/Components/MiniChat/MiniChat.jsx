@@ -1,14 +1,17 @@
+import { Users } from '../../Data';
 import './MiniChat.css'
 import { Close } from '@mui/icons-material'
 
-export default function MiniChat({openBoxChat, onCloseMini}) {
+export default function MiniChat({openBoxChat, onCloseMini, idFriend}) {
     function HandleOpen(){
         openBoxChat();
     }
+
+    const Friend = Users.find((f) => f.id === idFriend);
     return (
         <div className="minichat">
             <img 
-                src="/assets/Person/Person1.jpg" 
+                src={Friend.profilePicture}
                 alt=""
                 className="miniChat"
                 onClick={HandleOpen}

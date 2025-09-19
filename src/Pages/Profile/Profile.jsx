@@ -56,7 +56,17 @@ export default function Profile() {
 
           <div className="profileBottomRight">
             <Share />
-            {userPosts.map((post) => <Post key={post.id} post={post} />)}
+            {userPosts.length > 0 ? (
+              userPosts.map((post) => 
+                <Post key={post.id} post={post} />
+              )) : (
+                <div className="noPost">
+                    <p className="noPostTittle">
+                      Không có bài viết nào.
+                    </p>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>

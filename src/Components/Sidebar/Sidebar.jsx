@@ -1,4 +1,4 @@
-import { RssFeed, People, Groups, History, TurnedIn, InsertInvitation } from '@mui/icons-material'
+import { People, Groups, History, TurnedIn, InsertInvitation } from '@mui/icons-material'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
 import { Users } from '../../Data'

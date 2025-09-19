@@ -63,7 +63,15 @@ export default function FriendVisit() {
           </div>
 
           <div className="friendVisitBottomRight">
-            {userPosts.map((post) => <Post post={post} />)}
+            {userPosts.length > 0 ? (
+              userPosts.map((post) => <Post post={post} />
+            )) : (
+              <div className="noPost">
+                    <p className="noPostTittle">
+                      Không có bài viết nào.
+                    </p>
+                </div>
+            )}
           </div>
         </div>
       </div>

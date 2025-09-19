@@ -6,6 +6,7 @@ import FriendVisit from './Pages/FriendVisit/FriendVisit'
 import Register from './Pages/Register/Register'
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import ChangePassWord from './Pages/ChangePassWord/ChangePassWord'
+import FindFriend from './Pages/FindFriend/FindFriend'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/changePass' element={<ChangePassWord />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/profile/:id' element={<Profile />}/>
+        <Route path='/search' element={<FindFriend />} />
         <Route path='/visitProfile/:id' element={<FriendVisit />}/>
       </Routes>
     </BrowserRouter>

@@ -67,6 +67,7 @@ export default function Online( {idUs} ) {
                     openBoxChat={()=>
                         OpenChat(idFriend)
                     }
+                    idFriend={idFriend}
                 />
             }
         </ul>
