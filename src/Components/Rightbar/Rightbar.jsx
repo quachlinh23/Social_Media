@@ -10,7 +10,7 @@ export default function Rightbar() {
         <div className="birthdayContainer">
           <img className="birthdayImg" src="/assets/Event/Birthday.jpg" alt="" />
           <span className="birthdayText">
-            <b>Pola Foster</b> and <b>3 người khác</b> have a birthday today.
+            Hôm nay là sinh nhật của <b>Pola Foster</b> and <b>3 người khác</b>.
           </span>
         </div>
         <img src="/assets/Event/QuangCao.jpg" alt="" className="rightbarAd" />

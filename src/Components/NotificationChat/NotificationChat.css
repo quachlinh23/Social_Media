@@ -1,0 +1,59 @@
+.ChatDropDown {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    width: 360px;
+    height: 480px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    padding: 8px 0;
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
+}
+
+.ChatDropDown:hover {
+    overflow-y: auto;
+}
+
+.ChatDropDownList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ChatDropDownItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.ChatDropDownItem:hover {
+    background-color: #f0f2f5;
+    border-radius: 8px;
+}
+.userContentText {
+  display: inline-block; 
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.userContentName {
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}
+
+.userContentText {
+  font-size: 14px;
+  color: #333;
+}

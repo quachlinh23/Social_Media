@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from 'react-router-dom'
 import Topbar from '../../Components/Topbar/Topbar'
-import './FindFriend.css'
+import './Research.css'
 import { Users } from '../../Data';
 import { DynamicFeed, Person, YouTube, Storefront, Flag, Group, Event} from '@mui/icons-material'
 

@@ -1,6 +1,6 @@
 import { Users } from '../../Data'
 import { useState } from 'react';
-import Chat from '../Chat/Chat'
+import Chat from '../ChatWindown/ChatWindown'
 import './Online.css'
 import MiniChat from '../MiniChat/MiniChat';
 

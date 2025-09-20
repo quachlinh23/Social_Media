@@ -4,18 +4,34 @@ import { Link, useNavigate } from "react-router-dom";
 import { Users } from "../../Data"
 import { useState } from "react";
 import DropAvatar from "../DropAvatar/DropAvatar";
+import Notification from "../Notification/Notification";
+import ChatDropDown from "../NotificationChat/NotificationChat";
 
 
 export default function Topbar() {
   const userid = localStorage.getItem("UserId");
   const UserInfo = Users.find((us) => us.id === Number(userid));
   const [isDropDown, setIsDropDown] = useState(false);
+  const [openNotification, setOpenNotification] = useState(false);
+  const [openChatDropDown, setOpenChatDropDown] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+
   function handleDropDown(){
     setIsDropDown(!isDropDown);
   }
 
+  function handleOpenNotification(){
+    setOpenNotification(!openNotification)
+  }
+
+  function handleOpenChatDropDown(){
+    setOpenChatDropDown(!openChatDropDown)
+  }
+
+  function ChooseChat(){
+    setOpenChatDropDown(!openChatDropDown)
+  }
 
   function handleSearch(){
     if(query.trim !== ""){
@@ -55,16 +71,24 @@ export default function Topbar() {
       <div className="topbarRight">
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <Person />
+            <Person 
+              titleAccess="Lời mời kết bạn"
+            />
             <span className="topbarIconBadge">1</span>
           </div>
           <div className="topbarIconItem">
-            <Message />
+            <Message 
+              onClick={handleOpenChatDropDown}
+              titleAccess="Tin nhắn"
+            />
             <span className="topbarIconBadge">1</span>
           </div>
           <div className="topbarIconItem">
-            <Notifications  />
-            <span className="topbarIconBadge">2</span>
+            <Notifications 
+              onClick={handleOpenNotification}
+              titleAccess="Thông báo"
+            />
+            <span className="topbarIconBadge">7</span>
           </div>
         </div>
         <img 
@@ -74,8 +98,9 @@ export default function Topbar() {
           onClick={handleDropDown}
         />
         {isDropDown && <DropAvatar />}
+        {openNotification && <Notification />}
+        {openChatDropDown && <ChatDropDown/>}
       </div>
     </div>
-    
   );
 }

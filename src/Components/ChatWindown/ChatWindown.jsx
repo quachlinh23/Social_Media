@@ -1,9 +1,10 @@
-import './Chat.css'
+import './ChatWindown.css'
 import {Close, Remove, Mic, Photo, Gif} from '@mui/icons-material'
 import { Link } from 'react-router-dom';
 import { Users, Messages} from '../../Data'
+import { useState } from 'react';
 
-export default function Chat({ onClose, openMini, idFriend}) {
+export default function ChatWindown({ onClose, openMini, idFriend}) {
     function HandleClose(){
         onClose();
     }
@@ -14,7 +15,23 @@ export default function Chat({ onClose, openMini, idFriend}) {
 
     const InfoFriend = Users.find((us) => us.id === idFriend)
     const CurrentUser = Number(localStorage.getItem("UserId"));
+    const [messageText, setMessageText] = useState("");
+    const [messageDisplay, setMessageDisplay] = useState([]);
 
+    function handleChat(){
+        if (messageText !== ""){
+            setMessageDisplay(pre=> [
+                ...pre, {text: messageText}
+            ]);
+            setMessageText("");
+        }
+    }
+
+    function handleKey(e) {
+        if (e.key==="Enter"){
+            handleChat();
+        }
+    }
     return (
         <div className="chatWrapper">
             <div className="chatTop">
@@ -74,6 +91,13 @@ export default function Chat({ onClose, openMini, idFriend}) {
                         </div>
                     )
                 ))}
+                {messageDisplay.map((ms) => (
+                    <div className="chatSend">
+                        <span className="chatSendText">
+                            {ms.text}
+                        </span>
+                    </div>
+                ))}
             </div>
             <div className="chatBottom">
                 <Mic className="IconChatBottom"/>
@@ -82,9 +106,17 @@ export default function Chat({ onClose, openMini, idFriend}) {
                 <input 
                     type="text" 
                     placeholder="Nhập tin nhắn..." 
-                    className="chatInput" 
+                    className="chatInput"
+                    value={messageText}
+                    onChange={(e) => setMessageText(e.target.value)}
+                    onKeyDown={handleKey}
                 />
-                <button className="chatSendBtn">Gửi</button>
+                <button 
+                    className="chatSendBtn"
+                    onClick={handleChat}
+                >
+                        Gửi
+                </button>
             </div>
         </div>
     )

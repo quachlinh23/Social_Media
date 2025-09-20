@@ -1,8 +1,9 @@
 .minichat{
     position: absolute;
     z-index: 10000;
-    right: 10px;
-    bottom: 35px;
+    right: 15px;
+    bottom: 15px;
+    position: fixed
 }
 
 .miniChat{
