@@ -15,31 +15,35 @@ export default function Profile() {
       <Topbar />
       <div className="profile">
         <div className="profileTop">
-          <div className="profileSub">
-            <img 
-              src={currentUser.profilePicture} 
-              alt=""
-              className="profileSubImg"
-            />
-          </div>
+          {/* Ảnh bìa */}
+          <img 
+            src={currentUser.profilePicture || "assets/post/cover.jpg"} // Giả sử có coverPicture, nếu không dùng ảnh mặc định
+            alt="Cover"
+            className="profileSubImg"
+          />
 
           <div className="profileMain">
-            <div className="profileHeader">
-              <img 
-                src={currentUser.profilePicture} 
-                alt=""
-                className="profileMainImg"
-              />
-              <div className="profileInfo">
-                <h2 className="profileName">{currentUser.fullname}</h2>
-                <div className="profileButtons">
-                  <button className="profileBtn">Bạn bè</button>
-                  <button className="profileBtn">Nhắn tin</button>
-                </div>
+            {/* Ảnh đại diện */}
+            <img 
+              src={currentUser.profilePicture} 
+              alt="Profile"
+              className="profileMainImg"
+            />
+            <div className="profileInfo">
+              <h2 className="profileName">{currentUser.fullname}</h2>
+              <div className="profileButtons">
+                <button className="profileBtn">
+                  {/* Icon Friend nếu có */}
+                  <i className="fas fa-user-friends"></i> Bạn bè
+                </button>
+                <button className="profileBtn">
+                  {/* Icon Message nếu có */}
+                  <i className="fas fa-comment-alt"></i> Nhắn tin
+                </button>
               </div>
             </div>
-            <hr className="profileHr"/>
           </div>
+          {/* Đường HR sẽ không dùng ở đây nữa */}
         </div>
         
         <div className="profileBottom">
@@ -47,7 +51,7 @@ export default function Profile() {
             <div className="profileBottomLeftTop">
               <h3 className="titleProfileText">Giới thiệu</h3>
               <div className="bio">
-                {currentUser.desc}
+                {currentUser.desc ? currentUser.desc : "Chưa có giới thiệu."}
               </div>
             </div>
 
@@ -65,7 +69,7 @@ export default function Profile() {
               )) : (
                 <div className="noPost">
                     <p className="noPostTittle">
-                      Không có bài viết nào.
+                      Không có bài viết nào để hiển thị.
                     </p>
                 </div>
               )

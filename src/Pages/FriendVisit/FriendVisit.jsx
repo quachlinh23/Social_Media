@@ -9,50 +9,55 @@ import { Message, Person } from '@mui/icons-material'
 export default function FriendVisit() {
   const { id } = useParams();
   const userPosts = Posts.filter((p) => p.userId === Number(id));
-  const FriendInfo = Users.find((us) => us.id === Number(id))
+  const FriendInfo = Users.find((us) => us.id === Number(id));
+
+
+  const coverPicture = FriendInfo.profilePicture || "assets/post/cover.jpg";
 
   return (
     <> 
       <Topbar />
       <div className="friendVisit">
         <div className="friendVisitTop">
-            <div className="friendVisitSub">
-                <img 
-                src={FriendInfo.profilePicture}
-                alt=""
+            {/* Ảnh bìa */}
+            <img 
+                src={coverPicture}
+                alt="Cover"
                 className="friendVisitSubImg"
-                />
-            </div>
+            />
+            
             <div className="friendVisitMain">
-                <div className="friendVisitMainLeft">
-                    <img
-                        src={FriendInfo.profilePicture} 
-                        alt=""
-                        className="friendVisitMainImg"
-                    />
-                </div>
+                {/* Ảnh đại diện */}
+                <img
+                    src={FriendInfo.profilePicture} 
+                    alt="Profile"
+                    className="friendVisitMainImg"
+                />
+                
+                {/* Thông tin tên và nút hành động */}
                 <div className="friendVisitMainRight">
                     <span className="friendVisitMainRightUserName">
-                    {FriendInfo.fullname}
+                        {FriendInfo.fullname}
                     </span>
-                </div>
-                <div className="friendVisitMainBtns">
+                    <div className="friendVisitMainBtns">
                         <button className="btnFriend">
-                            <Person /> Bạn bè
+                            <Person style={{ fontSize: 18 }} /> Bạn bè
                         </button>
                         <button className="btnMessage">
-                            <Message /> Nhắn tin
+                            <Message style={{ fontSize: 18 }} /> Nhắn tin
                         </button>
+                    </div>
                 </div>
-                <hr className="friendVisitHr"/>
             </div>
+            {/* Đường HR sẽ không dùng ở đây */}
         </div>
+
         <div className="friendVisitBottom">
           <div className="friendVisitBottomLeft">
             <div className="friendVisitBottomLeftTop">
               <h3 className="titlefriendVisitText">Giới thiệu</h3>
               <div className="bio">
-                {FriendInfo.desc}
+                {FriendInfo.desc ? FriendInfo.desc : "Chưa có giới thiệu."}
               </div>
             </div>
 
@@ -64,11 +69,11 @@ export default function FriendVisit() {
 
           <div className="friendVisitBottomRight">
             {userPosts.length > 0 ? (
-              userPosts.map((post) => <Post post={post} />
-            )) : (
+              userPosts.map((post) => <Post key={post.id} post={post} />)
+            ) : (
               <div className="noPost">
                     <p className="noPostTittle">
-                      Không có bài viết nào.
+                      Không có bài viết nào để hiển thị.
                     </p>
                 </div>
             )}

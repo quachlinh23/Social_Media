@@ -1,53 +1,73 @@
+.profile {
+  background-color: #f0f2f5; /* Nền xám nhạt */
+  min-height: 100vh;
+}
+
+.profileTop {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px; /* Thêm padding dưới */
+}
+
+.profileSubImg { /* Ảnh bìa */
+  width: 100%;
+  height: 300px; /* Chiều cao ảnh bìa */
+  object-fit: cover;
+}
+
 .profileMain {
   width: 90%;
   margin: 0 auto;
-}
-
-.profileHeader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative; /* Để căn chỉnh các phần tử con dễ hơn */
+  top: -80px; /* Kéo lên trên ảnh bìa một chút */
+  display: flex; /* Dùng flexbox để căn chỉnh ảnh đại diện và thông tin */
+  align-items: flex-end; /* Căn dưới */
   gap: 20px;
-  margin-top: -50px; 
-  margin-left: -500px;
-  flex-wrap: wrap; /* responsive */
 }
 
-.profileMainImg {
-  width: 180px;
-  height: 180px;
+.profileMainImg { /* Ảnh đại diện */
+  width: 170px; /* Lớn hơn */
+  height: 170px;
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1); /* Thêm viền nhẹ */
 }
 
 .profileInfo {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  align-items: flex-start; /* Căn trái */
+  justify-content: flex-end;
+  margin-bottom: 10px; /* Đẩy lên trên một chút so với ảnh đại diện */
 }
 
 .profileName {
-  font-size: 28px;
+  font-size: 32px; /* Lớn hơn */
   font-weight: bold;
-  margin-left: -50px;
+  margin-left: 0; /* Bỏ margin âm */
+  color: #050505;
 }
 
 .profileButtons {
   display: flex;
   gap: 10px;
+  margin-top: 10px;
 }
 
 .profileBtn {
-  padding: 8px 16px;
+  padding: 10px 20px; /* Lớn hơn một chút */
   border: none;
-  border-radius: 6px;
+  border-radius: 8px; /* Bo tròn hơn */
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600; /* Đậm hơn */
   background-color: #1877f2;
   color: white;
   transition: 0.2s;
+  display: flex; /* Dùng flex để căn giữa icon và text nếu có */
+  align-items: center;
+  gap: 5px;
 }
 
 .profileBtn:first-child {
@@ -60,6 +80,99 @@
 }
 
 .profileHr {
-  margin: 20px auto;
+  display: none; /* Sẽ đặt đường HR bên trong profileTop */
+}
+
+/* Các phần tử mới cho bố cục 2 cột */
+.profileBottom {
+  display: flex;
   width: 90%;
+  margin: 20px auto;
+  gap: 20px;
+  align-items: flex-start; /* Căn trên cùng */
+}
+
+.profileBottomLeft {
+  flex: 2; /* Chiếm 2 phần */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileBottomRight {
+  flex: 3; /* Chiếm 3 phần */
+}
+
+.profileBottomLeftTop,
+.profileBottomLeftBottom {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.titleProfileText {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #050505;
+}
+
+.bio {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #606770;
+}
+
+.noPost {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #606770;
+}
+
+.noPostTittle {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profileMain {
+    flex-direction: column;
+    align-items: center;
+    top: -100px;
+  }
+
+  .profileInfo {
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .profileName {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .profileBottom {
+    flex-direction: column;
+    margin-top: -80px; /* Điều chỉnh lại khoảng cách */
+  }
+
+  .profileBottomLeft,
+  .profileBottomRight {
+    flex: 1; /* Chiếm toàn bộ chiều rộng */
+    width: 100%;
+  }
+
+  .profileSubImg {
+    height: 200px;
+  }
+
+  .profileMainImg {
+    width: 130px;
+    height: 130px;
+  }
 }

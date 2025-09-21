@@ -6,7 +6,12 @@ import { Link } from 'react-router-dom';
 export default function Share() {
     const userId = localStorage.getItem("UserId");
     const currentUser = Users.find((us) => us.id === Number(userId));
-    
+    const ClickHandleFeed(){
+
+
+
+        
+    }
     return (
         <div className="share">
             <div className="shareWrapper">
