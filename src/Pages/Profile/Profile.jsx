@@ -22,23 +22,26 @@ export default function Profile() {
               className="profileSubImg"
             />
           </div>
+
           <div className="profileMain">
-            <div className="profileMainLeft">
+            <div className="profileHeader">
               <img 
                 src={currentUser.profilePicture} 
                 alt=""
                 className="profileMainImg"
               />
-            </div>
-            <div className="profileMainRight">
-                <span className="profileMainRightUserName">
-                  {currentUser.fullname}
-                </span>
+              <div className="profileInfo">
+                <h2 className="profileName">{currentUser.fullname}</h2>
+                <div className="profileButtons">
+                  <button className="profileBtn">Bạn bè</button>
+                  <button className="profileBtn">Nhắn tin</button>
+                </div>
+              </div>
             </div>
             <hr className="profileHr"/>
           </div>
-          
         </div>
+        
         <div className="profileBottom">
           <div className="profileBottomLeft">
             <div className="profileBottomLeftTop">

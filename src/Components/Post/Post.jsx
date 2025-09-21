@@ -7,17 +7,29 @@ import { Link } from 'react-router-dom'
 export default function Post({post}) {
     const [isLike, setisLike] = useState(false);
     const [like, setLike] = useState(post.like);
+    const [showCommentBox, setShowCommentBox]=useState(false);
+    const [ commentText,setCommentText] = useState("");
 
     const currenUser = Users.find((u)=>(u.id === post.userId));
     const userId = localStorage.getItem("UserId");
     const path = Number(userId) === currenUser.id ? "profile" : "visitProfile";
-
+    function CommentHandle(){
+        setShowCommentBox(!showCommentBox);
+    }
     function LikeHandle() {
         setLike(isLike ? like - 1 : like + 1);
         setisLike(!isLike);
     }
+    function SubmitComment(){
+        if(commentText.trim()!==""){
+            console.log(" Bình Luận :",commentText);
+            setCommentText("");
+            post.comment++;
+            setShowCommentBox(false);
+        }
+    }
 
-    return (
+   return (
         <div className="post">
             <div className="postWrapper">
                 <div className="postTop">
@@ -72,7 +84,10 @@ export default function Post({post}) {
                             }} /> Thích
                         </button>
 
-                        <button className="postButton">
+                        <button 
+                            className="postButton"
+                            onClick={CommentHandle}
+                        >
                             <Comment style={{ marginRight: "5px" }} /> Bình luận
                         </button>
 
@@ -80,6 +95,24 @@ export default function Post({post}) {
                             <Share style={{ marginRight: "5px" }} /> Chia sẻ
                         </button>
                     </div>
+
+                    {/* Hiện ô nhập comment */}
+                    {showCommentBox && (
+                        <div className="commentBox">
+                            <textarea
+                                className="commentInput"
+                                placeholder="Viết bình luận..."
+                                value={commentText}
+                                onChange={(e)=>setCommentText(e.target.value)}
+                            />
+                            <button 
+                                className="commentSubmit"
+                                onClick={SubmitComment}
+                            >
+                                Gửi
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
