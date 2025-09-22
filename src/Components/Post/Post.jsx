@@ -1,20 +1,29 @@
 import { MoreVert, ThumbUp, Comment, Share, Close } from '@mui/icons-material'
 import './Post.css'
+import Postdetail from '../PostDetail/PostDetail'
 import { useState } from 'react'
-import {Users} from '../../Data'
+import {Users, Comments} from '../../Data'
 import { Link } from 'react-router-dom'
 
+
 export default function Post({post}) {
+    const ListComment = Comments.filter((comment) => comment.postId === post.id);
     const [isLike, setisLike] = useState(false);
     const [like, setLike] = useState(post.like);
-
     const currenUser = Users.find((u)=>(u.id === post.userId));
     const userId = localStorage.getItem("UserId");
     const path = Number(userId) === currenUser.id ? "profile" : "visitProfile";
+    const [detailPost, setDetailPost] = useState(false);
+    const currentPost = post.id;
 
+    
     function LikeHandle() {
         setLike(isLike ? like - 1 : like + 1);
         setisLike(!isLike);
+    }
+
+    function HandleDetailPost(){
+        setDetailPost(!detailPost)
     }
 
     return (
@@ -56,7 +65,12 @@ export default function Post({post}) {
                             <span className="postLikeCounter">{like} Lượt thích</span>
                         </div>
                         <div className="postBottomTopRight">
-                            <span className="postCommentText">{post.comment} Bình luận</span>
+                            <span 
+                                className="postCommentText"
+                                onClick={HandleDetailPost}
+                            >
+                                {ListComment.length} Bình luận
+                            </span>
                             <span className="postCommentText">{post.share} Chia sẻ</span>
                         </div>
                     </div>
@@ -72,7 +86,10 @@ export default function Post({post}) {
                             }} /> Thích
                         </button>
 
-                        <button className="postButton">
+                        <button 
+                            className="postButton"
+                            onClick={HandleDetailPost}
+                        >
                             <Comment style={{ marginRight: "5px" }} /> Bình luận
                         </button>
 
@@ -82,6 +99,12 @@ export default function Post({post}) {
                     </div>
                 </div>
             </div>
+            {detailPost && 
+                <Postdetail 
+                    OpenDetail={HandleDetailPost}
+                    idPost = {currentPost}
+                />
+            }
         </div>
     )
 }

@@ -7,6 +7,7 @@ import Register from './Pages/Register/Register'
 import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import ChangePassWord from './Pages/ChangePassWord/ChangePassWord'
 import Research from './Pages/Research/Research'
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 
 
 function ProtectedRoute({ children }) {
@@ -20,6 +21,7 @@ function ProtectedRoute({ children }) {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>

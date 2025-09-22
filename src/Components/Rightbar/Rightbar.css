@@ -18,6 +18,7 @@
 .birthdayContainer{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 .birthdayImg{
     width: 40px;
@@ -33,11 +34,16 @@
 .rightbarAd{
     width: 100%;
     border-radius: 10px;
-    margin: 30px 0;
+    margin: 10px 0;
 }
 
 .rightbarTitle{
     margin-bottom: 20px;
+    color: #a0a2a6;
+    font-weight: bold;
+}
+.Ads{
+    margin: 0px;
     color: #a0a2a6;
     font-weight: bold;
 }

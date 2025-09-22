@@ -9,7 +9,6 @@ export default function Profile() {
   const currentUserId = Number(localStorage.getItem("UserId"));
   const userPosts = Posts.filter((p) => p.userId === currentUserId);
   const currentUser = Users.find((us) => us.id === currentUserId);
-
   return (
     <div> 
       <Topbar />

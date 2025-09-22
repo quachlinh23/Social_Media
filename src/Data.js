@@ -6,7 +6,6 @@ export const Posts = [
         date: "5 phút",
         userId: 1,
         like: 32,
-        comment: 30,
         share: 9,
     },
     {
@@ -16,7 +15,6 @@ export const Posts = [
         date: "10 phút",
         userId: 2,
         like: 25,
-        comment: 18,
         share: 5,
     },
     {
@@ -26,7 +24,6 @@ export const Posts = [
         date: "15 phút",
         userId: 3,
         like: 41,
-        comment: 20,
         share: 7,
     },
     {
@@ -36,7 +33,6 @@ export const Posts = [
         date: "20 phút",
         userId: 4,
         like: 12,
-        comment: 6,
         share: 2,
     },
     {
@@ -46,7 +42,6 @@ export const Posts = [
         date: "25 phút",
         userId: 5,
         like: 55,
-        comment: 33,
         share: 11,
     },
     {
@@ -56,7 +51,6 @@ export const Posts = [
         date: "30 phút",
         userId: 6,
         like: 19,
-        comment: 9,
         share: 3,
     },
     {
@@ -66,7 +60,6 @@ export const Posts = [
         date: "35 phút",
         userId: 7,
         like: 47,
-        comment: 28,
         share: 14,
     },
     {
@@ -76,7 +69,6 @@ export const Posts = [
         date: "40 phút",
         userId: 8,
         like: 22,
-        comment: 11,
         share: 4,
     },
     {
@@ -86,7 +78,6 @@ export const Posts = [
         date: "45 phút",
         userId: 9,
         like: 36,
-        comment: 16,
         share: 6,
     },
     {
@@ -96,9 +87,108 @@ export const Posts = [
         date: "50 phút",
         userId: 10,
         like: 28,
-        comment: 12,
         share: 5,
     },
+];
+
+export const Comments = [
+  // Bài viết 1
+  {
+    id: 1,
+    postId: 2,
+    userId: 2,
+    text: "Đẹp quá, Anna!",
+  },
+  {
+    id: 2,
+    postId: 2,
+    userId: 3,
+    text: "Mình cũng thích bức này.",
+  },
+
+  // Bài viết 2
+  {
+    id: 3,
+    postId: 2,
+    userId: 1,
+    text: "Bãi biển tuyệt vời nhỉ John!",
+  },
+  {
+    id: 4,
+    postId: 2,
+    userId: 4,
+    text: "Mình muốn đi cùng!",
+  },
+
+  // Bài viết 3
+  {
+    id: 5,
+    postId: 3,
+    userId: 5,
+    text: "Coffee sáng là chuẩn luôn ☕",
+  },
+
+  // Bài viết 4
+  {
+    id: 6,
+    postId: 4,
+    userId: 2,
+    text: "Đôi giày nhìn xịn quá!",
+  },
+
+  // Bài viết 5
+  {
+    id: 7,
+    postId: 5,
+    userId: 6,
+    text: "Good vibes thật 😎",
+  },
+
+  // Bài viết 6
+  {
+    id: 8,
+    postId: 6,
+    userId: 3,
+    text: "Chúc bạn tập luyện hiệu quả 💪",
+  },
+
+  // Bài viết 7
+  {
+    id: 9,
+    postId: 7,
+    userId: 8,
+    text: "Mình cũng thích đi dạo trong rừng 🌳",
+  },
+
+  // Bài viết 8
+  {
+    id: 10,
+    postId: 8,
+    userId: 7,
+    text: "Chúc bạn cuối tuần vui vẻ 🥳",
+  },
+
+  // Bài viết 9
+  {
+    id: 11,
+    postId: 8,
+    userId: 5,
+    text: "Món ăn nhìn ngon quá 🍽️",
+  },
+
+  // Bài viết 10
+  {
+    id: 12,
+    postId: 10,
+    userId: 1,
+    text: "Chuyến đi tuyệt vời, James!",
+  },
+  {
+    id: 13,
+    postId: 10,
+    userId: 8,
+    text: "Đường dài nhớ lái xe cẩn thận 🚗",
+  },
 ];
 
 export const Users = [
@@ -108,6 +198,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Anna@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [2, 3, 5, 7],
     desc: "Thích du lịch và chụp ảnh.",
   },
@@ -117,6 +208,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person2.jpg",
     email: 'John@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [1, 4],
     desc: "Lập trình viên đam mê công nghệ.",
   },
@@ -126,6 +218,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person3.jpg",
     email: 'Sarah@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [1, 6],
     desc: "Yêu thích đọc sách và viết lách.",
   },
@@ -135,6 +228,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Michael@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [2],
     desc: "Người chơi bóng rổ chuyên nghiệp.",
   },
@@ -144,6 +238,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person2.jpg",
     email: 'Emily@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [1, 7, 9],
     desc: "Yêu động vật và thiên nhiên.",
   },
@@ -153,6 +248,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person3.jpg",
     email: 'David@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [3, 8],
     desc: "Thích chơi game và khám phá công nghệ mới.",
   },
@@ -162,6 +258,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Sophia@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [5, 1],
     desc: "Đam mê thời trang và thiết kế.",
   },
@@ -171,6 +268,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person2.jpg",
     email: 'Daniel@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [6, 9, 10],
     desc: "Người thích tập gym và thể thao.",
   },
@@ -180,6 +278,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person3.jpg",
     email: 'Olivia@gmail.com',
     password: '123456',
+    birthday:"2025-11-12",
     friends: [5, 8],
     desc: "Yêu thích nấu ăn và du lịch.",
   },
@@ -189,6 +288,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'James@gmail.com',
     password: '123456',
+    birthday:"2025-09-21",
     friends: [8],
     desc: "Thích âm nhạc và chơi guitar.",
   },
@@ -198,6 +298,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Messi@gmail.com',
     password: '123456',
+    birthday:"2025-09-21",
     friends: [8],
     desc: "Thích âm nhạc và chơi guitar.",
   },

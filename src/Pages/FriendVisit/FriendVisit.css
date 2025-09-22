@@ -69,7 +69,7 @@
 
 .btnFriend{
     border: none;
-    width: 120px;
+    /* width: 120px; */
     height: 30px;
     font-size: 15px;
     font-weight: bold;

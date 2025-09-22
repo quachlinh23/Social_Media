@@ -4,13 +4,19 @@ import { useParams } from 'react-router-dom'
 import Post from '../../Components/Post/Post'
 import {Posts, Users} from '../../Data'
 import ListFriend from '../../Components/ListFriend/ListFriend'
-import { Message, Person } from '@mui/icons-material'
+import { Message, Person, PersonAdd } from '@mui/icons-material'
+import { useState } from 'react'
 
 export default function FriendVisit() {
+  const currentUser = Number(localStorage.getItem("UserId"));
   const { id } = useParams();
   const userPosts = Posts.filter((p) => p.userId === Number(id));
-  const FriendInfo = Users.find((us) => us.id === Number(id))
-
+  const FriendInfo = Users.find((us) => us.id === Number(id));
+  const [friendState, setFriendState] = useState(FriendInfo.friends.includes(currentUser));
+  
+  function HandleFriend() {
+    setFriendState(!friendState);
+  }
   return (
     <> 
       <Topbar />
@@ -37,12 +43,16 @@ export default function FriendVisit() {
                     </span>
                 </div>
                 <div className="friendVisitMainBtns">
-                        <button className="btnFriend">
-                            <Person /> Bạn bè
-                        </button>
-                        <button className="btnMessage">
-                            <Message /> Nhắn tin
-                        </button>
+                    <button className="btnFriend" 
+                      onClick={HandleFriend}
+                      title={friendState ? "Hủy kết bạn" : "Gửi lời mời"}
+                    >
+                      {friendState ? <Person /> : <PersonAdd />}
+                      {friendState ? "Bạn bè" : "Thêm bạn bè"}
+                    </button>
+                  <button className="btnMessage">
+                    <Message /> Nhắn tin
+                  </button>
                 </div>
                 <hr className="friendVisitHr"/>
             </div>

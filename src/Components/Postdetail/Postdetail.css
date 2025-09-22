@@ -1,0 +1,256 @@
+.postdetail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.postdetailWrapper {
+  width: 600px;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  overflow: hidden;
+}
+
+.postdetailTop {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 40px 10px 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btnClose {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #e2e5e9;
+  border-radius: 50%;
+  padding: 5px;
+  border: none;
+}
+
+.btnClose:hover {
+  opacity: 0.8;
+}
+
+.postdetailCenter {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.postdetailCenterTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.postdetailCenterTopLeft {
+  display: flex;
+  align-items: center;
+}
+
+.postdetailLeftContent {
+  margin-left: 10px;
+}
+
+.postdetailUserName {
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.postdetailDate {
+  font-size: 12px;
+  color: gray;
+  cursor: pointer;
+}
+.postdetailUserName:hover,.postdetailDate:hover{
+  text-decoration: underline;
+}
+/* More icon */
+.postdetailTopRight {
+  cursor: pointer;
+}
+
+.MoreVertIcon:hover {
+  background-color: #f0f2f5;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.postdetailText {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.postdetailImg {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.postdetailHr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 5px 0;
+}
+
+.postdetailBottomBottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0;
+}
+
+.postdetailBottomTop{
+  display: flex;
+  justify-content: space-between;
+}
+
+.postdetailBottomTopRight{
+  display: flex;
+  gap: 10px;
+}
+
+.postdetailLikeCounter, .postdetailCommentText,
+.postdetailCommentText {
+  cursor: pointer;
+}
+.postdetailLikeCounter:hover, .postdetailCommentText:hover,
+.postdetailCommentText:hover, .CommentItemUsername:hover{
+  text-decoration: underline;
+
+}
+
+.postdetailButton {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0;
+  border-radius: 5px;
+}
+
+.postdetailButton:hover {
+  background-color: #f0f2f5;
+}
+
+.postdetailListComment{
+  margin-top: 15px;
+}
+.CommentItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.CommentItemProfileImg, .CommentItemProfileImg,
+.postdetailProfileImg, .postDetailUserImg{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.CommentItemContain {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  max-width: 450px;
+  background-color: #f0f2f5;
+  padding: 8px 12px;
+  border-radius: 18px;
+}
+
+.CommentItemUsername {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+
+.CommentItemText {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.postDetailBottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.InputText {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.InputText:focus {
+  border-color: #1877f2;
+}
+
+.iconSend{
+  color: #0062d2;
+  cursor: pointer;
+}
+
+.NoCommentItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: #65676b;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.noComentImg {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.noCommentTitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.noComment {
+  font-size: 14px;
+  color: #8e8e8e;
+}

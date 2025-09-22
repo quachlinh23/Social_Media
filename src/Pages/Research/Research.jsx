@@ -11,6 +11,7 @@ export default function FindFriend() {
         us.fullname.toLowerCase().includes((query || "").toLowerCase())
     );
     const currentUser = Number(localStorage.getItem("UserId"));
+    
 
     return (
         <>
@@ -48,8 +49,10 @@ export default function FindFriend() {
 
                 <div className="searchContain">
                     {filterUsers.length > 0 ? (
-                        filterUsers.map((us) => (
-                            <div className="searchInfo" key={us.id}>
+                        filterUsers.map((us) => {
+                            const isFriend = us.friends.includes(currentUser);
+                            return (
+                                <div className="searchInfo" key={us.id}>
                                 <div className="infoLeft">
                                     <Link 
                                         to={us.id === currentUser ? `/profile/${currentUser}` : `/visitProfile/${us.id}`}
@@ -70,12 +73,18 @@ export default function FindFriend() {
                                         </span>
                                     </Link>
                                 </div>
-                                <button className="addFriend">
-                                    Thêm bạn bè
-                                </button>
-                                
+                                {isFriend ? (
+                                    <button className="addFriend">
+                                        Bạn bè
+                                    </button>
+                                    ) : (
+                                    <button className="addFriend">
+                                        Thêm bạn bè
+                                    </button>
+                                )}
                             </div>
-                        ))) : (
+                            )
+                        } )) : (
                             <div className="noSearch">
                                 <img 
                                     src="/assets/Icons/noSearch.jpg" 

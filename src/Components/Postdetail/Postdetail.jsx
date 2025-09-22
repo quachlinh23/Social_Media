@@ -1,0 +1,211 @@
+import './Postdetail.css';
+import { useEffect, useRef, useState } from "react";
+import { Close, MoreVert, Comment, Share, ThumbUp, Send } from '@mui/icons-material';
+import { Posts, Users, Comments } from '../../Data';
+import { Link } from 'react-router-dom';
+
+export default function Postdetail({OpenDetail, idPost}) {
+    const ListComment = Comments.filter((comment) => comment.postId === idPost);
+    const PostDetail = Posts.find((pos) => pos.id === idPost );
+    const inforUser = Users.find((us) => us.id === Number(PostDetail.userId));
+
+    const currenUser = Number(localStorage.getItem("UserId"));
+    const path = currenUser === PostDetail.userId ? "profile" : "visitProfile";
+    const [addComment, setAddComment] = useState([]);
+    const [commentText, setCommentText] = useState("");
+
+    // Chặn thao tác bên ngoài
+    useEffect(() => {
+        const originalStyle = window.getComputedStyle(document.body).overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+        document.body.style.overflow = originalStyle;
+        };
+    }, []);
+
+    const inputRef = useRef(null);
+
+    const handleClick = () => {
+        inputRef.current.focus();
+    };
+
+    function closeDetail(){
+        OpenDetail();
+    }
+
+    function handleComment(){
+        if (commentText !== ""){
+            setAddComment(pre=> [
+                ...pre, {
+                        id: PostDetail.length + 1,
+                        postId: PostDetail.id,
+                        userid: inforUser.id,
+                        text: commentText
+                    }
+            ]);
+            setCommentText("");
+        }
+    }
+    
+    return (
+        <div className="postdetail">
+            <div className="postdetailWrapper">
+                <div className="postdetailTop">
+                    Bài viết của {inforUser.fullname}
+                    <Close 
+                        className="btnClose"
+                        onClick={closeDetail}
+                    />
+                </div>
+
+                <div className="postdetailCenter">
+                    <div className="postdetailCenterTop">
+                        <div className="postdetailCenterTopLeft">
+                            <Link to={`/${path}/${currenUser}`}>
+                                <img 
+                                    className="postdetailProfileImg" 
+                                    src={inforUser.profilePicture} 
+                                    alt="" 
+                                />
+                            </Link>
+                            
+                            <div className="postdetailLeftContent">
+                                <Link to={`/${path}/${currenUser}`} className="noLinkStyle">
+                                    <span className="postdetailUserName">{inforUser.fullname}</span><br />
+                                </Link>
+                                <span className="postdetailDate">{PostDetail.date}</span>
+                            </div>
+                        </div>
+                        <div className="postdetailTopRight">
+                            <MoreVert className="MoreVertIcon" style={{ transform: 'rotate(-90deg)' }} />
+                        </div>
+                    </div>
+
+                    <span className="postText">{PostDetail.desc}</span>
+                    <img 
+                        className="postImg" 
+                        src= {PostDetail.photo} 
+                        alt="" 
+                    />
+                    <hr className="postdetailHr" />
+
+                    <div className="postdetailBottom">
+                        <div className="postdetailBottomTop">
+                            <div className="postdetailBottomTopLeft">
+                                <span className="postdetailLikeCounter">{PostDetail.like} Lượt thích</span>
+                            </div>
+                            <div className="postdetailBottomTopRight">
+                                <span 
+                                    className="postdetailCommentText"
+                                >
+                                    {ListComment.length} Bình luận
+                                </span>
+                                <span className="postdetailCommentText">{PostDetail.share} Chia sẻ</span>
+                            </div>
+                        </div>
+                        <hr className="postdetailHr" />
+                        <div className="postdetailBottomBottom">
+                            <button className="postdetailButton"><ThumbUp /> Thích</button>
+                            <button 
+                                className="postdetailButton"
+                                onClick={handleClick}
+                            >
+                                <Comment /> Bình luận
+                            </button>
+                            <button className="postdetailButton"><Share /> Chia sẻ</button>
+                        </div>
+                        <hr className="postdetailHr" />
+                    </div>
+                    
+                    <div className="postdetailListComment">
+                        {
+                            ListComment.length > 0 ? (
+                                ListComment.map((item) => {
+                                    const UserInfo = Users.find((user) => user.id === item.userId);
+                                    return (
+                                        <div className="CommentItem">
+                                            <Link 
+                                                to={`/${path}/${UserInfo.id}`} 
+                                                className="noLinkStyle"
+                                                onClick={closeDetail}
+                                            >
+                                                <img 
+                                                    className="CommentItemProfileImg" 
+                                                    src={UserInfo.profilePicture}
+                                                    alt=""
+                                                />
+                                            </Link>
+                                            <div className="CommentItemContain">
+                                                <Link 
+                                                    to={`/${path}/${UserInfo.id}`} 
+                                                    className="noLinkStyle"
+                                                    onClick={closeDetail}
+                                                >
+                                                    <span className="CommentItemUsername">
+                                                        {UserInfo.fullname}
+                                                    </span>
+                                                </Link>
+                                                
+                                                <span className="CommentItemText">
+                                                    {item.text}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                addComment.length <= 0 && (
+                                    <div className="NoCommentItem">
+                                        <img 
+                                            src="/assets/Icons/noComment.png" 
+                                            alt="" 
+                                            className="noComentImg" />
+                                        <span className="noCommentTitle">Chưa có bình luận nào</span>
+                                        <span className="noComment">Hãy là người bình luận đầu tiên.</span>
+                                    </div>
+                                )
+                            )
+                        }
+                        {addComment.map((item) => {
+                            const user = Users.find(u => u.id === item.userid);
+                            return (
+                                <div className="CommentItem" key={item.id}>
+                                    <Link to={`/${path}/${user.id}`} className="noLinkStyle" onClick={closeDetail}>
+                                        <img className="CommentItemProfileImg" src={user.profilePicture} alt="" />
+                                    </Link>
+                                    <div className="CommentItemContain">
+                                        <Link to={`/${path}/${user.id}`} className="noLinkStyle" onClick={closeDetail}>
+                                            <span className="CommentItemUsername">{user.fullname}</span>
+                                        </Link>
+                                        <span className="CommentItemText">{item.text}</span>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+                
+                <div className="postDetailBottom">
+                    <img 
+                        src={inforUser.profilePicture}  
+                        alt="" 
+                        className="postDetailUserImg" 
+                    />
+                    <input 
+                        type="text" 
+                        className="InputText" 
+                        placeholder="Viết bình luận..."
+                        value={commentText}
+                        onChange={(e)=>setCommentText(e.target.value)}
+                        ref={inputRef}
+                    />
+                    <Send
+                        className="iconSend"
+                        titleAccess='Bình luận'
+                        onClick={handleComment}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
