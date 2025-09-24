@@ -52,7 +52,10 @@ export default function Login() {
                       value={passWord}
                       onChange={(e) => setPassWord(e.target.value) }
                     />
-                    <span className="errorForm">{error}</span>
+                    {error &&
+                      <span className="errorForm">{error}</span>
+                    }
+                    
 
                     <button 
                       className="loginButton" 

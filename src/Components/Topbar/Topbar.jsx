@@ -2,19 +2,23 @@ import "./Topbar.css";
 import { Search, Person, Message, Notifications } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { Users } from "../../Data"
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import DropAvatar from "../DropAvatar/DropAvatar";
 import Notification from "../Notification/Notification";
 import ChatDropDown from "../NotificationChat/NotificationChat";
+import NotificationFriendRequest from "../NotificationFriendRequest/NotificationFriendRequest";
 
 
 export default function Topbar() {
   const userid = localStorage.getItem("UserId");
   const UserInfo = Users.find((us) => us.id === Number(userid));
   const [isDropDown, setIsDropDown] = useState(false);
-  const [openNotification, setOpenNotification] = useState(false);
-  const [openChatDropDown, setOpenChatDropDown] = useState(false);
   const [query, setQuery] = useState("");
+  const [isNotification, setIsNotification] = useState(false);
+  const [isNotificationChat, setIsNotificationChat] = useState(false);
+  const [isNotificationFriend, setIsNotificationFriend] = useState(false);
+  const [activeDropDown, setActiveDropDown] = useState(null);
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
   function handleDropDown(){
@@ -22,16 +26,40 @@ export default function Topbar() {
   }
 
   function handleOpenNotification(){
-    setOpenNotification(!openNotification)
+    setActiveDropDown(activeDropDown === "notification" ? null : "notification");
+    setIsNotification(!isNotification);
+    setIsNotificationChat(false);
+    setIsNotificationFriend(false);
   }
 
   function handleOpenChatDropDown(){
-    setOpenChatDropDown(!openChatDropDown)
+    setActiveDropDown(activeDropDown === "chat" ? null : "chat");
+    setIsNotificationChat(!isNotificationChat);
+    setIsNotification(false);
+    setIsNotificationFriend(false);
   }
 
-  function ChooseChat(){
-    setOpenChatDropDown(!openChatDropDown)
+  function handleOpenFriendDropDown(){
+    setActiveDropDown(activeDropDown === "friend" ? null : "friend");
+    setIsNotificationFriend(!isNotificationFriend);
+    setIsNotification(false);
+    setIsNotificationChat(false);
   }
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveDropDown(null);
+        setIsNotificationChat(false);
+        setIsNotificationFriend(false);
+        setIsNotification(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   function handleSearch(){
     if(query.trim !== ""){
@@ -65,14 +93,17 @@ export default function Topbar() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handelKey}
+            autoComplete="off"
           />
         </div>
       </div>
-      <div className="topbarRight">
+      <div className="topbarRight" ref={dropdownRef}>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <Person 
+            <Person
+              onClick={handleOpenFriendDropDown}
               titleAccess="Lời mời kết bạn"
+              style={{color: isNotificationFriend ? "yellow" : ""}}
             />
             <span className="topbarIconBadge">1</span>
           </div>
@@ -80,6 +111,7 @@ export default function Topbar() {
             <Message 
               onClick={handleOpenChatDropDown}
               titleAccess="Tin nhắn"
+              style={{color: isNotificationChat ? "yellow" : ""}}
             />
             <span className="topbarIconBadge">1</span>
           </div>
@@ -87,6 +119,7 @@ export default function Topbar() {
             <Notifications 
               onClick={handleOpenNotification}
               titleAccess="Thông báo"
+              style={{color: isNotification ? "yellow" : ""}}
             />
             <span className="topbarIconBadge">7</span>
           </div>
@@ -98,8 +131,9 @@ export default function Topbar() {
           onClick={handleDropDown}
         />
         {isDropDown && <DropAvatar />}
-        {openNotification && <Notification />}
-        {openChatDropDown && <ChatDropDown/>}
+        {activeDropDown === "notification" && <Notification />}
+        {activeDropDown === "chat" && <ChatDropDown/>}
+        {activeDropDown === "friend" && <NotificationFriendRequest/>}
       </div>
     </div>
   );

@@ -17,31 +17,30 @@ export default function Rightbar() {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        <div className="birthdayContainer">
-          {ListBirthday.length > 0 && (
-            <>
-              <img className="birthdayImg" src="/assets/Event/Birthday.jpg" alt="" />
-              <span className="birthdayText">
-                Hôm nay là sinh nhật của  <strong>{ListBirthday[0].fullname}</strong>
-                {ListBirthday.length < 2 && (<> .</>)}
-                {
-                  ListBirthday.length > 1 && (
-                    <>
-                      and <strong>{ListBirthday.length -1} người khác</strong>.
-                    </>
-                  )
-                }  
-              </span>
-            </>
-          )}
-          
-        </div>
+        {ListBirthday.length > 0 && (
+          <div className="birthdayContainer">
+                <img className="birthdayImg" src="/assets/Event/Birthday.jpg" alt="" />
+                <span className="birthdayText">
+                  Hôm nay là sinh nhật của  <strong>{ListBirthday[0].fullname}</strong>
+                  {ListBirthday.length < 2 && (<> .</>)}
+                  {
+                    ListBirthday.length > 1 && (
+                      <>
+                        and <strong>{ListBirthday.length -1} người khác</strong>.
+                      </>
+                    )
+                  }  
+                </span>
+          </div>
+        )}
         <h4 className="Ads">Được tài trợ</h4>
-        <img src="/assets/Event/QuangCao.jpg" alt="" className="rightbarAd" />
+        <div className="ads">
+          <img src="/assets/Event/QuangCao.jpg" alt="" className="rightbarAd" />
+        </div>
         <h4 className="rightbarTitle">Người liên hệ</h4>
-          <Online 
-            idUs={currentUser}
-          />
+        <Online 
+          idUs={currentUser}
+        />
       </div>
     </div>
   )

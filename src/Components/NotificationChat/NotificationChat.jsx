@@ -3,6 +3,9 @@ import "./NotificationChat.css";
 export default function ChatDropDown() {
     return (
         <div className="ChatDropDown">
+            <div className="ChatDropDownTittle">
+                Đoạn chat
+            </div>
             <ul className="ChatDropDownList">
                 <li className="ChatDropDownItem">
                 <div className="UserImgWrapper">

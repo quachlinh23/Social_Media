@@ -4,6 +4,9 @@ import { AddComment, OndemandVideo, Flag } from "@mui/icons-material";
 export default function Notification() {
   return (
     <div className="notification">
+        <div className="notificationTittle">
+          Thông báo
+        </div>
         <ul className="notificationList">
             <li className="notificationItem">
                 <div className="UserImgWrapper">

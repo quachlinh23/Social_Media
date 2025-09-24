@@ -15,7 +15,7 @@ export default function Post({post}) {
     const path = Number(userId) === currenUser.id ? "profile" : "visitProfile";
     const [detailPost, setDetailPost] = useState(false);
     const currentPost = post.id;
-
+    
     
     function LikeHandle() {
         setLike(isLike ? like - 1 : like + 1);
@@ -26,6 +26,7 @@ export default function Post({post}) {
         setDetailPost(!detailPost)
     }
 
+    
     return (
         <div className="post">
             <div className="postWrapper">
@@ -103,6 +104,9 @@ export default function Post({post}) {
                 <Postdetail 
                     OpenDetail={HandleDetailPost}
                     idPost = {currentPost}
+                    isLikeisLike={isLike}
+                    LikeHandle={LikeHandle}
+                    likeCount = {like}
                 />
             }
         </div>

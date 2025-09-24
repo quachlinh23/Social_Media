@@ -4,7 +4,7 @@ import { Close, MoreVert, Comment, Share, ThumbUp, Send } from '@mui/icons-mater
 import { Posts, Users, Comments } from '../../Data';
 import { Link } from 'react-router-dom';
 
-export default function Postdetail({OpenDetail, idPost}) {
+export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike, likeCount}) {
     const ListComment = Comments.filter((comment) => comment.postId === idPost);
     const PostDetail = Posts.find((pos) => pos.id === idPost );
     const inforUser = Users.find((us) => us.id === Number(PostDetail.userId));
@@ -13,6 +13,8 @@ export default function Postdetail({OpenDetail, idPost}) {
     const path = currenUser === PostDetail.userId ? "profile" : "visitProfile";
     const [addComment, setAddComment] = useState([]);
     const [commentText, setCommentText] = useState("");
+
+    const [countComment, setCountComment] = useState(ListComment.length);
 
     // Chặn thao tác bên ngoài
     useEffect(() => {
@@ -44,9 +46,17 @@ export default function Postdetail({OpenDetail, idPost}) {
                     }
             ]);
             setCommentText("");
+            setCountComment(countComment+1)
         }
     }
-    
+    function handleLike(){
+        LikeHandle();
+    }
+
+    const handleKey = (e) => {
+        if(e.key === "Enter")
+            handleComment()
+    };
     return (
         <div className="postdetail">
             <div className="postdetailWrapper">
@@ -92,20 +102,25 @@ export default function Postdetail({OpenDetail, idPost}) {
                     <div className="postdetailBottom">
                         <div className="postdetailBottomTop">
                             <div className="postdetailBottomTopLeft">
-                                <span className="postdetailLikeCounter">{PostDetail.like} Lượt thích</span>
+                                <span className="postdetailLikeCounter">{likeCount} Lượt thích</span>
                             </div>
                             <div className="postdetailBottomTopRight">
                                 <span 
                                     className="postdetailCommentText"
+                                    onClick={handleClick}
                                 >
-                                    {ListComment.length} Bình luận
+                                    {countComment} Bình luận
                                 </span>
                                 <span className="postdetailCommentText">{PostDetail.share} Chia sẻ</span>
                             </div>
                         </div>
                         <hr className="postdetailHr" />
                         <div className="postdetailBottomBottom">
-                            <button className="postdetailButton"><ThumbUp /> Thích</button>
+                            <button className="postdetailButton"
+                                onClick={handleLike}
+                            >
+                                <ThumbUp style={{color: isLikeisLike ? "blue" : ""}}/> Thích
+                            </button>
                             <button 
                                 className="postdetailButton"
                                 onClick={handleClick}
@@ -186,11 +201,13 @@ export default function Postdetail({OpenDetail, idPost}) {
                 </div>
                 
                 <div className="postDetailBottom">
-                    <img 
-                        src={inforUser.profilePicture}  
-                        alt="" 
-                        className="postDetailUserImg" 
-                    />
+                    <Link to={`/${path}/${currenUser}`}>
+                        <img 
+                            src={inforUser.profilePicture}  
+                            alt="" 
+                            className="postDetailUserImg" 
+                        />
+                    </Link>
                     <input 
                         type="text" 
                         className="InputText" 
@@ -198,6 +215,7 @@ export default function Postdetail({OpenDetail, idPost}) {
                         value={commentText}
                         onChange={(e)=>setCommentText(e.target.value)}
                         ref={inputRef}
+                        onKeyDown={handleKey}
                     />
                     <Send
                         className="iconSend"
