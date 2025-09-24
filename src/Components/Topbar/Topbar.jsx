@@ -53,6 +53,7 @@ export default function Topbar() {
         setIsNotificationChat(false);
         setIsNotificationFriend(false);
         setIsNotification(false);
+        setIsDropDown(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -124,11 +125,13 @@ export default function Topbar() {
             <span className="topbarIconBadge">7</span>
           </div>
         </div>
-        <img 
+        <img
           src={UserInfo.profilePicture} 
           alt="" 
           className="topbarImg"
           onClick={handleDropDown}
+          ref={dropdownRef}
+          title="Tài khoản"
         />
         {isDropDown && <DropAvatar />}
         {activeDropDown === "notification" && <Notification />}

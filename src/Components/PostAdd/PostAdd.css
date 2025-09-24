@@ -1,0 +1,129 @@
+.PostAddWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.PostAddContain {
+  width: 470px;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.PostAddContainTop {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 40px 10px 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.btnClose {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #e2e5e9;
+  border-radius: 50%;
+  padding: 5px;
+  border: none;
+}
+
+.btnClose:hover {
+  opacity: 0.8;
+}
+.PostAddContainInfo{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.PostAddContainInfoImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.PostAddContainText{
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+    min-height: 300px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.optionPost{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.optionPostTitle{
+    font-weight: 500;
+}
+
+.optionPostIcon{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+.optionPostIcon:hover{
+    border-radius: 50%;
+    background-color: #e0e0e0;
+}
+
+.PostAddContainBottom{
+    width: 100%;
+}
+
+.BtnaddPost{
+    width: 100%;
+    border-radius: 5px;
+    background-color: #0866ff;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.BtnaddPost:hover{
+    background-color: #0866ff;
+    opacity: 0.8;
+}
+
+.BtnaddPost:disabled {
+  background-color: #ccc; /* xám khi disabled */
+  cursor: not-allowed;
+}

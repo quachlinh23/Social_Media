@@ -10,9 +10,9 @@ export default function ChatDropDown() {
                 <li className="ChatDropDownItem">
                 <div className="UserImgWrapper">
                     <img
-                    src="/assets/Person/Person1.jpg"
-                    alt=""
-                    className="UserImg"
+                        src="/assets/Person/Person1.jpg"
+                        alt=""
+                        className="UserImg"
                     />
                 </div>
                 <div className="userContent">
