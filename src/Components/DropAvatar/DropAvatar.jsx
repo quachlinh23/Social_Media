@@ -1,30 +1,30 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './DropAvatar.css'
-import { Users } from '../../Data'
+import { NavigateNext } from '@mui/icons-material';
 
-export default function DropAvatar() {
-    const userId = Number(localStorage.getItem("UserId"));
-    const currentUser = Users.find((us) => us.id === userId);
+export default function DropAvatar({User}) {
     const nagative = useNavigate();
-
+    //Đăng xuất
     function HandleLogout(){
         nagative("/login");
         localStorage.removeItem("UserId");
     }
 
     return (
-        <div className="dropDown">
+        <div className="dropDownAvatar">
             <ul className="OptionLists">
-                <Link to={`/profile/${userId}`} className='noLinkStyle'>
-                    <li className="OtpionProfile">
+                <Link to={`/profile/${User.id}`} className='noLinkStyle'>
+                    <li 
+                        className="OtpionProfile"
+                        title='Truy cập trang cá nhân'
+                    >
                         <img 
-                            src={currentUser.profilePicture} 
+                            src={User.profilePicture} 
                             alt=""
                             className="OptionImg"
                         />
-                        
                         <span className="optionName">
-                            {currentUser.fullname}
+                            {User.fullname}
                         </span>
                     </li>
                 </Link>

@@ -198,7 +198,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Anna@gmail.com',
     password: '123456',
-    birthday:"2025-11-12",
+    birthday:"2025-09-25",
     friends: [2, 3, 5, 7],
     desc: "Thích du lịch và chụp ảnh.",
   },

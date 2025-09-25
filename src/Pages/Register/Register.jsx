@@ -109,19 +109,6 @@ export default function Register() {
                                         onChange={(e)=>setGender(e.target.value)}
                                     />
                                 </div>
-                                    <div className="genderDiff"
-                                        onClick={() => setGender("Khac")}
-                                    >
-                                        <label>Khác</label>
-                                        <input 
-                                            type="radio" 
-                                            id="other" 
-                                            name="gender" 
-                                            value="Khac"
-                                            checked={gender === "Khac"}
-                                            onChange={(e)=>setGender(e.target.value)}
-                                        />
-                                    </div>
                             </div>
                         </div>
 
@@ -147,7 +134,7 @@ export default function Register() {
                                     required
                                     onChange={(e) => setMonth(Number(e.target.value))}
                                 >   
-                                    <option value="">Ngày</option>
+                                    <option value="">Tháng</option>
                                     {months.map((month, index) => 
                                         <option key={index}>{month}</option>
                                     )}
@@ -159,7 +146,7 @@ export default function Register() {
                                     required
                                     onChange={(e) => setYear(Number(e.target.value))}
                                 >   
-                                    <option value="">Ngày</option>
+                                    <option value="">Năm</option>
                                     {years.map((month, index) => 
                                         <option key={index}>{month}</option>
                                     )}

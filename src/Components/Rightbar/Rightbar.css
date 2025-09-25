@@ -4,7 +4,7 @@
     overflow-y: hidden;
     position: sticky;
     top: 50px;
-    scrollbar-gutter: stable; /* Dành sẵn không gian cho thanh cuộn */
+    scrollbar-gutter: stable;
 }
 
 .rightbar:hover {
@@ -19,15 +19,23 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
 }
+
+.birthdayContainer:hover {
+  background-color: #f0f2f5;
+}
+
 .birthdayImg{
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    mix-blend-mode: multiply;
+    mix-blend-mode: darken;
 }
 
 .birthdayText{
-    font-weight: 300;
+    font-weight: 400;
     font-style: 15px;
 }
 
@@ -35,15 +43,15 @@
     width: 100%;
     border-radius: 10px;
     margin: 10px 0;
+    margin-top: 0;
+    cursor: pointer;
 }
 
-.rightbarTitle{
-    margin-bottom: 20px;
+.rightbarTitle, .Ads, .BirthdayTitle{
+    margin-bottom: 10px;
     color: #a0a2a6;
     font-weight: bold;
 }
-.Ads{
-    margin: 0px;
-    color: #a0a2a6;
-    font-weight: bold;
+.hrRightbar{
+    margin-bottom: 10px;
 }

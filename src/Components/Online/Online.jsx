@@ -1,6 +1,6 @@
 import { Users } from '../../Data'
 import { useState } from 'react';
-import Chat from '../ChatWindown/ChatWindown'
+import ChatWindown from '../ChatWindown/ChatWindown'
 import './Online.css'
 import MiniChat from '../MiniChat/MiniChat';
 
@@ -55,7 +55,7 @@ export default function Online( {idUs} ) {
                 </li>
             ))}
             {openChat && 
-                <Chat 
+                <ChatWindown
                     onClose={closeChat}
                     openMini={MiniMum}
                     idFriend={idFriend}

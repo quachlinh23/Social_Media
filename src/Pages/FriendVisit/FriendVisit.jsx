@@ -1,9 +1,11 @@
-import Topbar from '../../Components/Topbar/Topbar'
 import './FriendVisit.css'
-import { useParams } from 'react-router-dom'
+import Topbar from '../../Components/Topbar/Topbar'
+import ChatWindown from '../../Components/ChatWindown/ChatWindown';
+import MiniChat from '../../Components/MiniChat/MiniChat'
 import Post from '../../Components/Post/Post'
-import {Posts, Users} from '../../Data'
 import ListFriend from '../../Components/ListFriend/ListFriend'
+import { Posts, Users } from '../../Data'
+import { useParams } from 'react-router-dom'
 import { Message, Person, PersonAdd } from '@mui/icons-material'
 import { useState } from 'react'
 
@@ -13,10 +15,30 @@ export default function FriendVisit() {
   const userPosts = Posts.filter((p) => p.userId === Number(id));
   const FriendInfo = Users.find((us) => us.id === Number(id));
   const [friendState, setFriendState] = useState(FriendInfo.friends.includes(currentUser));
-  
+  const [openChat, setOpenChat] = useState(false);
+  const [showMini, setShowMini] = useState(false);
+
   function HandleFriend() {
     setFriendState(!friendState);
   }
+  function OpenChat(){
+    setOpenChat(!openChat);
+    setShowMini(false);
+  }
+
+  function closeChat(){
+    setOpenChat(false);
+  }
+
+  function MiniMum(){
+    setOpenChat(false);
+    setShowMini(true);
+  }
+
+  function OncloseMini(){
+    setShowMini(false);
+  }
+
   return (
     <> 
       <Topbar />
@@ -50,9 +72,13 @@ export default function FriendVisit() {
                       {friendState ? <Person /> : <PersonAdd />}
                       {friendState ? "Bạn bè" : "Thêm bạn bè"}
                     </button>
-                  <button className="btnMessage">
+                  <button 
+                    className="btnMessage"
+                    onClick={OpenChat}
+                  >
                     <Message /> Nhắn tin
                   </button>
+                  
                 </div>
                 <hr className="friendVisitHr"/>
             </div>
@@ -85,6 +111,23 @@ export default function FriendVisit() {
           </div>
         </div>
       </div>
+      {openChat &&
+        <ChatWindown 
+          onClose={closeChat}
+          openMini={MiniMum}
+          idFriend={Number(FriendInfo.id)}
+        />
+      }
+
+      {showMini &&
+        <MiniChat
+          onCloseMini={OncloseMini}
+          openBoxChat={()=>
+            OpenChat(FriendInfo.id)
+          }
+          idFriend={Number(FriendInfo.id)}
+        />
+      }
     </>
   )
 }

@@ -8,25 +8,16 @@ export default function NotificationFriendRequest() {
             </div>
             <ul className="FriendDropDownList">
                 <li className="FriendDropDownItem">
-                    <div className="UserImgWrapper">
-                        <img
+                    <img
                         src="/assets/Person/Person1.jpg"
-                        alt=""
-                        className="UserImg"
-                        />
-                    </div>
-                    <div className="userContent">
-                        <div className="userContentName">
-                            Quách
-                        </div>
+                        alt="user"
+                        className="FriendDropDownItemImg"
+                    />
+                    <div className="FriendDropDownItemContent">
+                        <div className="FriendDropDownItemName">Quách</div>
                         <div className="BtnsOption">
-                            <button className="btnAccept">
-                                Xác nhận
-                            </button>
-
-                            <button className="btnCancle">
-                                Xóa
-                            </button>
+                            <button className="btnAccept">Xác nhận</button>
+                            <button className="btnCancle">Xóa</button>
                         </div>
                     </div>
                 </li>

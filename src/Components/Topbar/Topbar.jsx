@@ -1,78 +1,57 @@
 import "./Topbar.css";
-import { Search, Person, Message, Notifications } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
-import { Users } from "../../Data"
-import { useState, useRef, useEffect } from "react";
 import DropAvatar from "../DropAvatar/DropAvatar";
 import Notification from "../Notification/Notification";
 import ChatDropDown from "../NotificationChat/NotificationChat";
 import NotificationFriendRequest from "../NotificationFriendRequest/NotificationFriendRequest";
-
+import { Users } from "../../Data"
+import { Search, Person, Message, Notifications } from "@mui/icons-material";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 
 export default function Topbar() {
   const userid = localStorage.getItem("UserId");
   const UserInfo = Users.find((us) => us.id === Number(userid));
-  const [isDropDown, setIsDropDown] = useState(false);
   const [query, setQuery] = useState("");
-  const [isNotification, setIsNotification] = useState(false);
-  const [isNotificationChat, setIsNotificationChat] = useState(false);
-  const [isNotificationFriend, setIsNotificationFriend] = useState(false);
-  const [activeDropDown, setActiveDropDown] = useState(null);
+  const [activeDropDown, setActiveDropDown] = useState(null); // "account" | "notification" | "chat" | "friend"
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  function handleDropDown(){
-    setIsDropDown(!isDropDown);
+  function toggleDropDown(type) {
+    setActiveDropDown(activeDropDown === type ? null : type);
   }
 
-  function handleOpenNotification(){
-    setActiveDropDown(activeDropDown === "notification" ? null : "notification");
-    setIsNotification(!isNotification);
-    setIsNotificationChat(false);
-    setIsNotificationFriend(false);
-  }
-
-  function handleOpenChatDropDown(){
-    setActiveDropDown(activeDropDown === "chat" ? null : "chat");
-    setIsNotificationChat(!isNotificationChat);
-    setIsNotification(false);
-    setIsNotificationFriend(false);
-  }
-
-  function handleOpenFriendDropDown(){
-    setActiveDropDown(activeDropDown === "friend" ? null : "friend");
-    setIsNotificationFriend(!isNotificationFriend);
-    setIsNotification(false);
-    setIsNotificationChat(false);
-  }
-
+  // Click ra ngoài thì ẩn cửa sổ đang dropdown đi
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setActiveDropDown(null);
-        setIsNotificationChat(false);
-        setIsNotificationFriend(false);
-        setIsNotification(false);
-        setIsDropDown(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  function handleSearch(){
-    if(query.trim !== ""){
-      navigate(`/search?query=${encodeURIComponent(query)}`);
+  // đồng bộ query từ URL vào input
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const q = params.get("query") || "";
+    setQuery(q);
+  }, [location.search]);
+
+  //Tìm kiếm thông tin
+  function handleSearch() {
+    const trimmed = query.trim();
+    if (trimmed) {
+      navigate(`/search?query=${encodeURIComponent(trimmed)}`);
     }
   }
 
-  const handelKey = (e) => {
-    if (e.key === "Enter"){
-      handleSearch();
-    }
+  //Nhấn enter để tìm kiếm
+  const handleKey = (e) => {
+    if (e.key === "Enter") handleSearch();
   }
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -80,63 +59,64 @@ export default function Topbar() {
           <span className="logo">SocialMedia</span>
         </Link>
       </div>
+
       <div className="topbarCenter">
         <div className="searchbar">
-          <Search 
-            className="searchIcon" 
-            onClick={handleSearch}
-          />
+          <Search className="searchIcon" onClick={handleSearch}/>
           <input
             id="search"
             placeholder="Tìm kiếm trên Social Media"
             className="searchInput"
-            name="searchData"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handelKey}
+            onKeyDown={handleKey}
             autoComplete="off"
           />
         </div>
       </div>
+
       <div className="topbarRight" ref={dropdownRef}>
         <div className="topbarIcons">
           <div className="topbarIconItem">
             <Person
-              onClick={handleOpenFriendDropDown}
+              onClick={() => toggleDropDown("friend")}
               titleAccess="Lời mời kết bạn"
-              style={{color: isNotificationFriend ? "yellow" : ""}}
+              style={{ color: activeDropDown === "friend" ? "yellow" : "" }}
             />
             <span className="topbarIconBadge">1</span>
           </div>
           <div className="topbarIconItem">
-            <Message 
-              onClick={handleOpenChatDropDown}
+            <Message
+              onClick={() => toggleDropDown("chat")}
               titleAccess="Tin nhắn"
-              style={{color: isNotificationChat ? "yellow" : ""}}
+              style={{ color: activeDropDown === "chat" ? "yellow" : "" }}
             />
             <span className="topbarIconBadge">1</span>
           </div>
           <div className="topbarIconItem">
-            <Notifications 
-              onClick={handleOpenNotification}
+            <Notifications
+              onClick={() => toggleDropDown("notification")}
               titleAccess="Thông báo"
-              style={{color: isNotification ? "yellow" : ""}}
+              style={{ color: activeDropDown === "notification" ? "yellow" : "" }}
             />
             <span className="topbarIconBadge">7</span>
           </div>
         </div>
+
         <img
-          src={UserInfo.profilePicture} 
-          alt="" 
+          src={UserInfo.profilePicture}
+          alt=""
           className="topbarImg"
-          onClick={handleDropDown}
-          ref={dropdownRef}
+          onClick={() => toggleDropDown("account")}
           title="Tài khoản"
         />
-        {isDropDown && <DropAvatar />}
-        {activeDropDown === "notification" && <Notification />}
-        {activeDropDown === "chat" && <ChatDropDown/>}
-        {activeDropDown === "friend" && <NotificationFriendRequest/>}
+
+        {activeDropDown === "account" &&
+          <DropAvatar User={UserInfo}/>
+        }
+        {activeDropDown === "notification" && <Notification/>}
+        {activeDropDown === "chat" && <ChatDropDown />}
+        {activeDropDown === "friend" && <NotificationFriendRequest />}
       </div>
     </div>
   );

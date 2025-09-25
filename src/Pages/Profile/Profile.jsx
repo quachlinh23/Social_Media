@@ -5,10 +5,12 @@ import Post from '../../Components/Post/Post'
 import { Posts, Users } from '../../Data'
 import ListFriend from '../../Components/ListFriend/ListFriend'
 
+
 export default function Profile() {
   const currentUserId = Number(localStorage.getItem("UserId"));
   const userPosts = Posts.filter((p) => p.userId === currentUserId);
   const currentUser = Users.find((us) => us.id === currentUserId);
+  
   return (
     <div> 
       <Topbar />

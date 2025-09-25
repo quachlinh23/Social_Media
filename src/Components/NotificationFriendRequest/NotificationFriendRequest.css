@@ -5,24 +5,22 @@
     width: 360px;
     height: 480px;
     background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     z-index: 100;
-    padding: 8px 0;
-    overflow-y: hidden;
+    overflow-y: auto;
     scrollbar-gutter: stable;
+    animation: fadeIn 0.2s ease;
 }
 
 .FriendDropDownTittle {
-    padding: 8px 16px;
-    font-size: 22px;
+    padding: 12px 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #1a1a1a;
-    border-radius: 6px;
-}
-
-.FriendDropDown:hover {
-    overflow-y: auto;
+    border-bottom: 1px solid #eee;
+    background-color: #f9fafb;
 }
 
 .FriendDropDownList {
@@ -34,66 +32,71 @@
 .FriendDropDownItem {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 12px;
+    gap: 12px;
+    padding: 12px;
+    transition: background-color 0.2s ease, transform 0.1s;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
 .FriendDropDownItem:hover {
-    background-color: #f0f2f5;
+    background-color: #f5f6f7;
     border-radius: 8px;
 }
-.userContentText {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 200px;
-    font-size: 14px;
-    color: #333;
+
+.FriendDropDownItemImg {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.userContentName {
-    font-weight: 700;
-    font-size: 16px;
+.FriendDropDownItemContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.FriendDropDownItemName {
+    font-weight: 600;
+    font-size: 15px;
+    color: #050505;
+    margin-bottom: 6px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 5px;
 }
 
 .BtnsOption {
     display: flex;
-    gap: 5px;
-  
+    gap: 8px;
 }
 
-.btnAccept, .btnCancle {
+.btnAccept,
+.btnCancle {
+    flex: 1;
     font-size: 14px;
-    font-weight: 700;
-    border-radius: 6px;
-    padding: 6px 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 6px 0;
     cursor: pointer;
-    outline: none;
-    transition: background-color 0.2s, transform 0.1s;
-}
-.btnAccept{
-    background-color: #1877f2;
-    color: white;
+    transition: all 0.2s ease;
     border: none;
 }
-.btnCancle{
-    background-color: #ffffff;
-    color: #333;
-    border: 1px solid gray;
+
+.btnAccept {
+    background-color: #1877f2;
+    color: #fff;
 }
 
 .btnAccept:hover {
-    background-color: #1877f2;
-    opacity: 0.8;
+    background-color: #166fe5;
 }
 
-.btnCancle:hover{
-    background-color: #ffffff;
-    opacity: 0.8;
+.btnCancle {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.btnCancle:hover {
+    background-color: #e4e6eb;
 }
