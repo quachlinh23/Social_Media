@@ -38,7 +38,7 @@ export default function ListFriend( {id} ) {
                     </div>
                 ))
             ) : (
-                <p className="nofriend">Người này chưa có bạn bè</p>
+                <p className="nofriend">Chưa có bạn bè</p>
             )}       
         </div>
     )

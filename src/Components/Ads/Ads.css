@@ -1,0 +1,50 @@
+.AdsContain {
+    width: 100%;
+}
+
+.AdsItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.AdsItem:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.AdsItemLeft, .AdsItemRight {
+    width: 50%;
+}
+
+.AdsItemLeftImg {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.AdsItemRightText {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.IconItem{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    gap: 10px;
+}
+
+.NoAds{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}

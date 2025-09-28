@@ -92,7 +92,6 @@ export const Posts = [
 ];
 
 export const Comments = [
-  // Bài viết 1
   {
     id: 1,
     postId: 2,
@@ -105,8 +104,6 @@ export const Comments = [
     userId: 3,
     text: "Mình cũng thích bức này.",
   },
-
-  // Bài viết 2
   {
     id: 3,
     postId: 2,
@@ -119,64 +116,48 @@ export const Comments = [
     userId: 4,
     text: "Mình muốn đi cùng!",
   },
-
-  // Bài viết 3
   {
     id: 5,
     postId: 3,
     userId: 5,
     text: "Coffee sáng là chuẩn luôn ☕",
   },
-
-  // Bài viết 4
   {
     id: 6,
     postId: 4,
     userId: 2,
     text: "Đôi giày nhìn xịn quá!",
   },
-
-  // Bài viết 5
   {
     id: 7,
     postId: 5,
     userId: 6,
     text: "Good vibes thật 😎",
   },
-
-  // Bài viết 6
   {
     id: 8,
     postId: 6,
     userId: 3,
     text: "Chúc bạn tập luyện hiệu quả 💪",
   },
-
-  // Bài viết 7
   {
     id: 9,
     postId: 7,
     userId: 8,
     text: "Mình cũng thích đi dạo trong rừng 🌳",
   },
-
-  // Bài viết 8
   {
     id: 10,
     postId: 8,
     userId: 7,
     text: "Chúc bạn cuối tuần vui vẻ 🥳",
   },
-
-  // Bài viết 9
   {
     id: 11,
     postId: 8,
     userId: 5,
     text: "Món ăn nhìn ngon quá 🍽️",
   },
-
-  // Bài viết 10
   {
     id: 12,
     postId: 10,
@@ -198,7 +179,7 @@ export const Users = [
     profilePicture: "/assets/Person/Person1.jpg",
     email: 'Anna@gmail.com',
     password: '123456',
-    birthday:"2025-09-25",
+    birthday:"2025-09-27",
     friends: [2, 3, 5, 7],
     desc: "Thích du lịch và chụp ảnh.",
   },
@@ -299,7 +280,7 @@ export const Users = [
     email: 'Messi@gmail.com',
     password: '123456',
     birthday:"2025-09-21",
-    friends: [8],
+    friends: [],
     desc: "Thích âm nhạc và chơi guitar.",
   },
 ];

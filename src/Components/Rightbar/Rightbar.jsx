@@ -1,4 +1,5 @@
 import { Users } from '../../Data';
+import Ads from '../Ads/Ads';
 import Online from '../Online/Online'
 import './Rightbar.css'
 
@@ -40,7 +41,8 @@ export default function Rightbar() {
         )}
         <h4 className="Ads">Được tài trợ</h4>
         <div className="ads">
-          <img src="/assets/Event/QuangCao.jpg" alt="" className="rightbarAd" />
+          <Ads />
+          <Ads />
         </div>
         <hr className="hrRightbar"/>
         <h4 className="rightbarTitle">Người liên hệ</h4>

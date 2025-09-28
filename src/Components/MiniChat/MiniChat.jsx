@@ -9,7 +9,7 @@ export default function MiniChat({openBoxChat, onCloseMini, idFriend}) {
 
     const Friend = Users.find((f) => f.id === idFriend);
     return (
-        <div className="minichat">
+        <div className="minichat" title={`Mở đoạn chat với ${Friend.fullname}`}>
             <img 
                 src={Friend.profilePicture}
                 alt=""

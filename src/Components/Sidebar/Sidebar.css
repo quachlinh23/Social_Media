@@ -3,10 +3,16 @@
     height: calc(100vh - 50px);
     position: sticky;
     top: 50px;
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
 }
 
 .sidebarWrapper{
     padding: 20px;
+}
+
+.sidebar:hover {
+    overflow-y: auto;
 }
 
 .sidebarList{
@@ -18,9 +24,11 @@
 .sidebarListItem {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    padding: 5px 8px;
     cursor: pointer;
     height: 40px;
+    border-radius: 8px;
 }
 
 .sidebarListItem:hover {
@@ -28,20 +36,38 @@
 }
 
 .sidebarIcon {
-    margin-right: 15px;
+    margin-right: 20px;
+}
+
+.avatarImg{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.sidebarListItemText {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
 }
 
 
-.avatarImg{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 5px;
+.TitleSidebar{
+    padding: 8px 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #333; 
+}
+.sidebarHr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ccc;
 }
 
 .noLinkStyle {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
