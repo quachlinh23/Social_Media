@@ -1,13 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './DropAvatar.css'
-import { NavigateNext } from '@mui/icons-material';
+import { useAuth } from '../context/AuthContext';
 
 export default function DropAvatar({User}) {
     const nagative = useNavigate();
+    const { logout } = useAuth();
+    
     //Đăng xuất
     function HandleLogout(){
+        logout();
         nagative("/login");
-        localStorage.removeItem("UserId");
     }
 
     return (

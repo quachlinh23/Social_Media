@@ -1,21 +1,28 @@
 import { MoreVert, ThumbUp, Comment, Share, Close } from '@mui/icons-material'
 import './Post.css'
 import Postdetail from '../PostDetail/PostDetail'
-import { useState } from 'react'
+import React, { useMemo, useState} from 'react'
 import {Users, Comments} from '../../Data'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
-
-export default function Post({post}) {
-    const ListComment = Comments.filter((comment) => comment.postId === post.id);
+// export default 
+function Post({post}) {
+    const {user} = useAuth();
     const [isLike, setisLike] = useState(false);
     const [like, setLike] = useState(post.like);
-    const currenUser = Users.find((u)=>(u.id === post.userId));
-    const userId = localStorage.getItem("UserId");
-    const path = Number(userId) === currenUser.id ? "profile" : "visitProfile";
     const [detailPost, setDetailPost] = useState(false);
-    const currentPost = post.id;
-    
+
+    //Thông tin của user là chủ bài post
+    const PostUser = Users.find((u)=>(u.id === post.userId));
+    //Đường dẫn chuyển trang
+    const path = Number(user.id) === post.userId ? "profile" : "visitProfile";
+
+    //Dùng usememo để lọc danh sách comment của một bài post
+    const ListComment = useMemo(() => 
+        Comments.filter((comment) => comment.postId === post.id),
+        [post.id]
+    );
     
     function LikeHandle() {
         setLike(isLike ? like - 1 : like + 1);
@@ -26,21 +33,22 @@ export default function Post({post}) {
         setDetailPost(!detailPost)
     }
 
-    
     return (
         <div className="post">
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <Link to={`/${path}/${currenUser.id}`}>
+                        <Link to={`/${path}/${PostUser.id}`}>
                             <img 
                                 className="postProfileImg" 
-                                src={currenUser.profilePicture} alt="" 
+                                src={PostUser.profilePicture} 
+                                alt=""
+                                loading="lazy"
                             />
                         </Link>
                         <div className="postTopLeftContent">
-                            <Link to={`/${path}/${currenUser.id}`} className="noLinkStyle">
-                                <span className="postUserName">{currenUser.fullname}</span>
+                            <Link to={`/${path}/${PostUser.id}`} className="noLinkStyle">
+                                <span className="postUserName">{PostUser.fullname}</span>
                             </Link>
                             <br />
                             <span className="postDate">{post.date}</span>
@@ -56,7 +64,9 @@ export default function Post({post}) {
                     <span className="postText">{post.desc}</span>
                     <img 
                         className="postImg" 
-                        src={post.photo} alt="" 
+                        src={post.photo} 
+                        alt=""
+                        loading="lazy"
                     />
                     <hr className="postHr"/>
                 </div>
@@ -103,7 +113,7 @@ export default function Post({post}) {
             {detailPost && 
                 <Postdetail 
                     OpenDetail={HandleDetailPost}
-                    idPost = {currentPost}
+                    idPost = {post.id}
                     isLikeisLike={isLike}
                     LikeHandle={LikeHandle}
                     likeCount = {like}
@@ -112,3 +122,4 @@ export default function Post({post}) {
         </div>
     )
 }
+export default React.memo(Post);

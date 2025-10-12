@@ -9,10 +9,12 @@ import './Sidebar.css'
 import { Link } from 'react-router-dom'
 import { Users } from '../../Data'
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 export default function Sidebar() {
-  const userId = localStorage.getItem("UserId");
-  const curentUser = Users.find((us) => us.id === Number(userId));
+  const {user} = useAuth();
+  // const userId = localStorage.getItem("UserId");
+  // const curentUser = Users.find((us) => us.id === Number(userId));
   const [extend, setExtend] = useState(false);
 
   function handleExtend() {
@@ -23,17 +25,17 @@ export default function Sidebar() {
     <div className="sidebar">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
-          <Link to={`/profile/${curentUser.id}`} className="noLinkStyle">
+          <Link to={`/profile/${user.id}`} className="noLinkStyle">
             <li className="sidebarListItem">
               <div className="avatar">
                 <img  
                   className="avatarImg"
-                  src={curentUser.profilePicture} 
+                  src={user.profilePicture} 
                   alt="" 
                 />  
               </div>
               <span className="sidebarListItemText">
-                {curentUser.fullname}
+                {user.fullname}
               </span>
             </li>
           </Link>

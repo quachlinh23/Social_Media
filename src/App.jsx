@@ -8,19 +8,22 @@ import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import ChangePassWord from './Pages/ChangePassWord/ChangePassWord'
 import Research from './Pages/Research/Research'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
+import { AuthProvider, useAuth } from './Components/context/AuthContext'
 
 
 function ProtectedRoute({ children }) {
-  const isLogin = localStorage.getItem("UserId");
-  if (!isLogin) {
-    return <Navigate to="/login" replace />;
+  const { user } = useAuth();
+    if (!user) {
+      return <Navigate to="/login" replace/>;
+    }
+    return children;
   }
-  return children;
-}
 
 function App() {
   return (
+    
     <BrowserRouter>
+    <AuthProvider >
       <ScrollToTop />
       <Routes>
         <Route path='/login' element={<Login />}/>
@@ -32,8 +35,8 @@ function App() {
         <Route path='/search' element={<ProtectedRoute><Research /></ProtectedRoute>} />
         <Route path='/visitProfile/:id' element={<ProtectedRoute><FriendVisit /></ProtectedRoute>}/>
       </Routes>
+      </AuthProvider>
     </BrowserRouter>
   )
 }
-
 export default App

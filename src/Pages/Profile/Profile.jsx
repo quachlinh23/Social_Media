@@ -4,13 +4,13 @@ import Share from '../../Components/Share/Share'
 import Post from '../../Components/Post/Post'
 import { Posts, Users } from '../../Data'
 import ListFriend from '../../Components/ListFriend/ListFriend'
-
+import { useAuth } from '../../Components/context/AuthContext'; 
 
 export default function Profile() {
-  const currentUserId = Number(localStorage.getItem("UserId"));
-  const userPosts = Posts.filter((p) => p.userId === currentUserId);
-  const currentUser = Users.find((us) => us.id === currentUserId);
-  
+  const {user} = useAuth();
+
+  //Lọc danh sách bài post
+  const userPosts = Posts.filter((p) => p.userId === user.id);
   return (
     <div> 
       <Topbar />
@@ -18,7 +18,7 @@ export default function Profile() {
         <div className="profileTop">
           <div className="profileSub">
             <img 
-              src={currentUser.profilePicture} 
+              src={user.profilePicture} 
               alt=""
               className="profileSubImg"
             />
@@ -26,14 +26,14 @@ export default function Profile() {
           <div className="profileMain">
             <div className="profileMainLeft">
               <img 
-                src={currentUser.profilePicture} 
+                src={user.profilePicture} 
                 alt=""
                 className="profileMainImg"
               />
             </div>
             <div className="profileMainRight">
                 <span className="profileMainRightUserName">
-                  {currentUser.fullname}
+                  {user.fullname}
                 </span>
             </div>
             <hr className="profileHr"/>
@@ -45,13 +45,13 @@ export default function Profile() {
             <div className="profileBottomLeftTop">
               <h3 className="titleProfileText">Giới thiệu</h3>
               <div className="bio">
-                {currentUser.desc}
+                {user.desc}
               </div>
             </div>
 
             <div className="profileBottomLeftBottom">
               <h3 className="titleProfileText">Bạn bè</h3>
-              <ListFriend id={currentUser.id} />
+              <ListFriend id={user.id} />
             </div>
           </div>
 

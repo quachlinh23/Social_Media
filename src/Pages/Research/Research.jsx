@@ -3,16 +3,16 @@ import Topbar from '../../Components/Topbar/Topbar'
 import './Research.css'
 import { Users } from '../../Data';
 import { DynamicFeed, Person, YouTube, Storefront, Flag, Group, Event} from '@mui/icons-material'
+import { useAuth } from '../../Components/context/AuthContext';
 
 export default function FindFriend() {
+    const {user} = useAuth();
     const [searchParams] = useSearchParams();
     const query = searchParams.get("query");
     const filterUsers = Users.filter((us) =>
+        us.id !== user?.id &&
         us.fullname.toLowerCase().includes((query || "").toLowerCase())
     );
-    const currentUser = Number(localStorage.getItem("UserId"));
-    
-
     return (
         <>
             <Topbar />
@@ -50,12 +50,12 @@ export default function FindFriend() {
                 <div className="searchContain">
                     {filterUsers.length > 0 ? (
                         filterUsers.map((us) => {
-                            const isFriend = us.friends.includes(currentUser);
+                            const isFriend = us.friends.includes(user.id);
                             return (
                                 <div className="searchInfo" key={us.id}>
                                 <div className="infoLeft">
                                     <Link 
-                                        to={us.id === currentUser ? `/profile/${currentUser}` : `/visitProfile/${us.id}`}
+                                        to={`/visitProfile/${us.id}`}
                                         className="noLinkStyle"
                                     >
                                         <img 
@@ -65,7 +65,7 @@ export default function FindFriend() {
                                         />
                                     </Link>
                                     <Link 
-                                        to={us.id === currentUser ? `/profile/${currentUser}` : `/visitProfile/${us.id}`}
+                                        to={`/visitProfile/${us.id}`}
                                         className="noLinkStyle"
                                     >
                                         <span className="infoUserName">

@@ -8,13 +8,14 @@ import { Posts, Users } from '../../Data'
 import { useParams } from 'react-router-dom'
 import { Message, Person, PersonAdd } from '@mui/icons-material'
 import { useState } from 'react'
+import { useAuth } from '../../Components/context/AuthContext';
 
 export default function FriendVisit() {
-  const currentUser = Number(localStorage.getItem("UserId"));
+  const {user} = useAuth();
   const { id } = useParams();
   const userPosts = Posts.filter((p) => p.userId === Number(id));
   const FriendInfo = Users.find((us) => us.id === Number(id));
-  const [friendState, setFriendState] = useState(FriendInfo.friends.includes(currentUser));
+  const [friendState, setFriendState] = useState(FriendInfo.friends.includes(user));
   const [openChat, setOpenChat] = useState(false);
   const [showMini, setShowMini] = useState(false);
 

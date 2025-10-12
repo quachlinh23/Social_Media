@@ -4,10 +4,11 @@ import { Users } from '../../Data'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import PostAdd from '../PostAdd/PostAdd';
+import { useAuth } from '../context/AuthContext';
 
 export default function Share() {
-    const userId = localStorage.getItem("UserId");
-    const currentUser = Users.find((us) => us.id === Number(userId));
+    const {user} = useAuth();
+    const currentUser = Users.find((us) => us.id === Number(user.id));
     const [openAddPost, setOpenAddPost] = useState(false);
 
     function handleOpenAddPost(){
@@ -17,15 +18,15 @@ export default function Share() {
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <Link to={`/profile/${userId}`}>
+                    <Link to={`/profile/${user.id}`}>
                         <img 
                             className="shareProfileImg" 
-                            src={currentUser.profilePicture} 
+                            src={user.profilePicture} 
                             alt="" 
                         />
                     </Link>
                     <input 
-                        placeholder={`${currentUser.fullname} ơi, bạn đang nghĩ gì thế?`} 
+                        placeholder={`${user.fullname} ơi, bạn đang nghĩ gì thế?`} 
                         className="shareInput"
                         onClick={handleOpenAddPost}
                     />

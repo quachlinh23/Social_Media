@@ -2,11 +2,10 @@ import { Users } from '../../Data';
 import Ads from '../Ads/Ads';
 import Online from '../Online/Online'
 import './Rightbar.css'
-
+import { useAuth } from '../context/AuthContext';
 
 export default function Rightbar() {
-  const currentUser = localStorage.getItem("UserId");
-  
+  const { user } = useAuth();
   function isBirthday(date) {
     const NowDate = new Date();
     const birthdayUser = new Date(date);
@@ -47,7 +46,7 @@ export default function Rightbar() {
         <hr className="hrRightbar"/>
         <h4 className="rightbarTitle">Người liên hệ</h4>
         <Online 
-          idUs={currentUser}
+          idUs={user.id}
         />
       </div>
     </div>

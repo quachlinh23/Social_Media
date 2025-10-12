@@ -16,6 +16,7 @@ export default function PostAdd({handleClose, user}) {
             setContain("");
         }
     }
+
     // Chặn thao tác bên ngoài
     useEffect(() => {
         const originalStyle = window.getComputedStyle(document.body).overflow;
@@ -24,6 +25,7 @@ export default function PostAdd({handleClose, user}) {
         document.body.style.overflow = originalStyle;
         };
     }, []);
+
     return (
         <div className="PostAddWrapper">
             <div className="PostAddContain">

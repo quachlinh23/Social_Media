@@ -3,14 +3,14 @@ import DropAvatar from "../DropAvatar/DropAvatar";
 import Notification from "../Notification/Notification";
 import ChatDropDown from "../NotificationChat/NotificationChat";
 import NotificationFriendRequest from "../NotificationFriendRequest/NotificationFriendRequest";
-import { Users } from "../../Data"
 import { Search, Person, Message, Notifications } from "@mui/icons-material";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import { useAuth  } from "../context/AuthContext";
 
 export default function Topbar() {
-  const userid = localStorage.getItem("UserId");
-  const UserInfo = Users.find((us) => us.id === Number(userid));
+  const { user } = useAuth ();
+
   const [query, setQuery] = useState("");
   const [activeDropDown, setActiveDropDown] = useState(null); // "account" | "notification" | "chat" | "friend"
   const dropdownRef = useRef(null);
@@ -104,16 +104,16 @@ export default function Topbar() {
         </div>
 
         <img
-          src={UserInfo.profilePicture}
+          src={user.profilePicture}
           alt=""
           className="topbarImg"
           onClick={() => toggleDropDown("account")}
           title="Tài khoản"
         />
 
-        {activeDropDown === "account" &&
-          <DropAvatar User={UserInfo}/>
-        }
+        {activeDropDown === "account" && user ? (
+          <DropAvatar User={user}/>
+        ) : null}
         {activeDropDown === "notification" && <Notification/>}
         {activeDropDown === "chat" && <ChatDropDown />}
         {activeDropDown === "friend" && <NotificationFriendRequest />}

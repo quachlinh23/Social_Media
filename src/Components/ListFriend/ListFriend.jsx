@@ -1,10 +1,12 @@
 import './ListFriend.css'
 import { Users } from '../../Data'
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function ListFriend( {id} ) {
+    const { user } = useAuth();
+
     const currentUser = Users.find((us) => us.id === Number(id));
-    const UserLogin = Number(localStorage.getItem("UserId"));
     const List =  currentUser?.friends || [];
     const ListFriend = Users.filter(
         (userFriend) => List.includes(userFriend.id)
@@ -17,7 +19,7 @@ export default function ListFriend( {id} ) {
                     <div className="ListFriend" key={friend.id}>
                         <div className="FriendImg">
                             <Link 
-                                to={UserLogin === friend.id ? `/profile/${friend.id}` : `/visitProfile/${friend.id}`} className="noLinkStyle"
+                                to={user.id === friend.id ? `/profile/${friend.id}` : `/visitProfile/${friend.id}`} className="noLinkStyle"
                             >
                                 <img 
                                     src={friend.profilePicture}
@@ -29,7 +31,7 @@ export default function ListFriend( {id} ) {
 
                         <div className="FriendName">
                             <Link 
-                                to={UserLogin === friend.id ? `/profile/${friend.id}` : `/visitProfile/${friend.id}`} className="noLinkStyle">
+                                to={user.id === friend.id ? `/profile/${friend.id}` : `/visitProfile/${friend.id}`} className="noLinkStyle">
                                 <span className="NickName">
                                     {friend.fullname}
                                 </span>

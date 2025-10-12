@@ -3,17 +3,22 @@ import { useEffect, useRef, useState } from "react";
 import { Close, MoreVert, Comment, Share, ThumbUp, Send } from '@mui/icons-material';
 import { Posts, Users, Comments } from '../../Data';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike, likeCount}) {
-    const ListComment = Comments.filter((comment) => comment.postId === idPost);
-    const PostDetail = Posts.find((pos) => pos.id === idPost );
-    const inforUser = Users.find((us) => us.id === Number(PostDetail.userId));
+    const {user} = useAuth();
 
-    const currenUser = Number(localStorage.getItem("UserId"));
-    const path = currenUser === PostDetail.userId ? "profile" : "visitProfile";
+    //Danh sách comment của một bài viết
+    const ListComment = Comments.filter((comment) => comment.postId === idPost);
+    //Chi tiết của một bài viết
+    const PostDetail = Posts.find((pos) => pos.id === idPost );
+    //Thông tin user của bài viết
+    const PostUser = Users.find((us) => us.id === Number(PostDetail.userId));
+    //Đường dẫn truy cập trang
+
+    const path = user.id === PostDetail.userId ? "profile" : "visitProfile";
     const [addComment, setAddComment] = useState([]);
     const [commentText, setCommentText] = useState("");
-
     const [countComment, setCountComment] = useState(ListComment.length);
 
     // Chặn thao tác bên ngoài
@@ -41,7 +46,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                 ...pre, {
                         id: PostDetail.length + 1,
                         postId: PostDetail.id,
-                        userid: inforUser.id,
+                        userid: user.id,
                         text: commentText
                     }
             ]);
@@ -49,6 +54,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
             setCountComment(countComment+1)
         }
     }
+    
     function handleLike(){
         LikeHandle();
     }
@@ -61,7 +67,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
         <div className="postdetail">
             <div className="postdetailWrapper">
                 <div className="postdetailTop">
-                    Bài viết của {inforUser.fullname}
+                    Bài viết của {PostUser.fullname}
                     <Close 
                         className="btnClose"
                         onClick={closeDetail}
@@ -71,17 +77,17 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                 <div className="postdetailCenter">
                     <div className="postdetailCenterTop">
                         <div className="postdetailCenterTopLeft">
-                            <Link to={`/${path}/${currenUser}`}>
+                            <Link to={`/${path}/${user.id}`}>
                                 <img 
                                     className="postdetailProfileImg" 
-                                    src={inforUser.profilePicture} 
+                                    src={PostUser.profilePicture} 
                                     alt="" 
                                 />
                             </Link>
                             
                             <div className="postdetailLeftContent">
-                                <Link to={`/${path}/${currenUser}`} className="noLinkStyle">
-                                    <span className="postdetailUserName">{inforUser.fullname}</span><br />
+                                <Link to={`/${path}/${user.id}`} className="noLinkStyle">
+                                    <span className="postdetailUserName">{PostUser.fullname}</span><br />
                                 </Link>
                                 <span className="postdetailDate">{PostDetail.date}</span>
                             </div>
@@ -138,7 +144,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                                 ListComment.map((item) => {
                                     const UserInfo = Users.find((user) => user.id === item.userId);
                                     return (
-                                        <div className="CommentItem">
+                                        <div className="CommentItem" key={item.id}>
                                             <Link 
                                                 to={`/${path}/${UserInfo.id}`} 
                                                 className="noLinkStyle"
@@ -201,9 +207,9 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                 </div>
                 
                 <div className="postDetailBottom">
-                    <Link to={`/${path}/${currenUser}`}>
+                    <Link to={`/${path}/${user.id}`}>
                         <img 
-                            src={inforUser.profilePicture}  
+                            src={user.profilePicture}  
                             alt="" 
                             className="postDetailUserImg" 
                         />

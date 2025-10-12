@@ -3,8 +3,14 @@ import {Close, Remove, Mic, Photo, Gif} from '@mui/icons-material'
 import { Link } from 'react-router-dom';
 import { Users, Messages} from '../../Data'
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 export default function ChatWindown({ onClose, openMini, idFriend}) {
+    const {user} = useAuth();
+    const InfoFriend = Users.find((us) => us.id === idFriend)
+    const [messageText, setMessageText] = useState("");
+    const [messageDisplay, setMessageDisplay] = useState([]);
+
     function HandleClose(){
         onClose();
     }
@@ -12,12 +18,6 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
     function HandleMinimun(){
         openMini();
     }
-
-    const InfoFriend = Users.find((us) => us.id === idFriend)
-    const CurrentUser = Number(localStorage.getItem("UserId"));
-    const [messageText, setMessageText] = useState("");
-    const [messageDisplay, setMessageDisplay] = useState([]);
-
     function handleChat(){
         if (messageText !== ""){
             setMessageDisplay(pre=> [
@@ -66,10 +66,10 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
             </div>
             <div className="chatContainer">
                 {Messages.filter(ms => 
-                    (ms.idSend === CurrentUser && ms.idReceive === InfoFriend.id) ||
-                    (ms.idSend === InfoFriend.id && ms.idReceive === CurrentUser)
+                    (ms.idSend === user.id && ms.idReceive === InfoFriend.id) ||
+                    (ms.idSend === InfoFriend.id && ms.idReceive === user.id)
                 ).map(ms => (
-                    ms.idSend === CurrentUser ? 
+                    ms.idSend === user.id ? 
                     (
                         <div className="chatSend" key={ms.id}>
                             <span className="chatSendText">
