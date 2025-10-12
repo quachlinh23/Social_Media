@@ -1,57 +1,78 @@
+
 .profile{
-    width: 100%;
+ width: 100%;
 }
 
 .profileTop{
-    width: 100%;
+ width: 100%;
 }
 
 .profileSub{
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
+ width: 90%;
+ margin: 0 auto;
+  position: relative; /* Giữ nguyên để các phần tử con có thể định vị tương đối với nó */
 }
 
 .profileSubImg{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+ width: 100%;
+ height: 400px;
+ object-fit: cover;
+ /* Đã bỏ position: relative; vì không cần thiết */
 }
 
-.profileMainImg {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    left: 15%;
-    bottom: 250px;
-    transform: translateX(-50%);
-    border: 5px solid white;
-}
+/* --- PHẦN CẬP NHẬT CHÍNH --- */
 
-.profileMainRightUserName{
-    position: absolute;
-    left: 23%;
-    bottom: 310px;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.profileHr{
-    margin-top: 130px;
-    width: 90%;
-    margin: 130px auto 20px auto; 
-}
-
-.profileBottom {
+/* Loại bỏ background-color: red và thay đổi cách căn chỉnh */
+.profileMain{
   display: flex;
-  justify-content: space-between; /* giữ khoảng cách đều */
-  margin: 0 auto;
-  width: 90%;
-  gap: 100px;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  width: 90%; /* Bằng với profileSub */
+  margin: 0 auto; /* Căn giữa */
+  /* Di chuyển lên trên ảnh bìa */
+  position: absolute; 
+  top: 320px; /* Điều chỉnh giá trị này để đặt avatar lên trên ảnh bìa một khoảng hợp lý */
+  left: 50%; /* Bắt đầu căn chỉnh từ giữa */
+  transform: translateX(-50%); /* Dịch chuyển ngược lại 50% độ rộng để căn giữa */
+  z-index: 10; /* Đảm bảo nó nằm trên ảnh bìa */
 }
 
+/* Điều chỉnh lại vị trí của Avatar */
+.profileMainImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid white;
+  margin-right: 20px; /* Tạo khoảng cách với tên người dùng */
+  /* Đã bỏ các thuộc tính định vị tuyệt đối (position, left, bottom, transform) */
+}
+
+/* Điều chỉnh vị trí của Tên người dùng */
+.profileMainRightUserName{
+  font-size: 30px;
+  font-weight: bold;
+  color: black; /* Đổi màu chữ sang trắng để nổi bật trên nền ảnh bìa */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Thêm đổ bóng để dễ đọc hơn */
+ 
+}
+
+/* Điều chỉnh lại vị trí của đường kẻ ngang */
+.profileHr{
+ /* Đã thay đổi margin-top/bottom để căn chỉnh lại */
+ margin: 150px auto 20px auto; 
+ width: 90%;
+}
+
+/* --- Giữ nguyên các phần còn lại --- */
+.profileBottom {
+   display: flex;
+ justify-content: space-between; 
+ margin: 0 auto;
+ width: 90%;
+ gap: 100px;
+}
+
+/* ... các rule CSS khác ... */
 .profileBottomLeft {
     flex: 4;
 }

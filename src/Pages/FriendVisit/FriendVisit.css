@@ -9,40 +9,61 @@
 .friendVisitSub{
     width: 90%;
     margin: 0 auto;
-    position: relative;
+     position: relative;
 }
-
 .friendVisitSubImg{
     width: 100%;
     height: 400px;
     object-fit: cover;
-}
+   
 
+}
+.friendVisitMain {
+    position: absolute;
+    /* bottom: -80px; */
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 90%;
+    margin-top: -150px;
+    /* margin: 0 auto; */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    z-index: 10;
+    /* background-color: red; */
+}
+.friendVisitMainInfo{
+display: flex;
+align-items: flex-end;
+gap: 20px;
+
+
+
+}
 .friendVisitMainImg {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    position: absolute;
-    left: 15%;
-    bottom: 250px;
-    transform: translateX(-50%);
     border: 5px solid white;
 }
 
 .friendVisitMainRightUserName{
-    position: absolute;
-    left: 23%;
-    bottom: 310px;
     font-size: 30px;
     font-weight: bold;
+    margin-bottom: 25px;
+    color: black; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .friendVisitMainBtns{
-    display: flex;
-    position: absolute;
-    right: 7%;
-    bottom: 310px;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-left: 1000px;
+    width: auto;
+    height: auto;
+    margin-bottom: 25px;
     gap: 10px;
 }
 
@@ -86,9 +107,10 @@
     opacity: 0.8;
 }
 .friendVisitHr{
-    margin-top: 130px;
+   flex-wrap: 1 1 100%;
+
     width: 90%;
-    margin: 130px auto 20px auto; 
+    margin: 100px auto 20px auto; 
 }
 
 .friendVisitBottom {

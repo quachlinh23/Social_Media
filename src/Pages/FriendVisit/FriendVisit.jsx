@@ -52,19 +52,20 @@ export default function FriendVisit() {
                 className="friendVisitSubImg"
                 />
             </div>
+
+
             <div className="friendVisitMain">
-                <div className="friendVisitMainLeft">
+                <div className="friendVisitMainInfo">
                     <img
                         src={FriendInfo.profilePicture} 
                         alt=""
                         className="friendVisitMainImg"
                     />
-                </div>
-                <div className="friendVisitMainRight">
                     <span className="friendVisitMainRightUserName">
                     {FriendInfo.fullname}
                     </span>
-                </div>
+              
+
                 <div className="friendVisitMainBtns">
                     <button className="btnFriend" 
                       onClick={HandleFriend}
@@ -79,11 +80,13 @@ export default function FriendVisit() {
                   >
                     <Message /> Nhắn tin
                   </button>
-                  
-                </div>
+                   </div>
+               
+        </div>
+         </div>
                 <hr className="friendVisitHr"/>
             </div>
-        </div>
+        
         <div className="friendVisitBottom">
           <div className="friendVisitBottomLeft">
             <div className="friendVisitBottomLeftTop">

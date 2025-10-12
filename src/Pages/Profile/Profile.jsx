@@ -22,24 +22,26 @@ export default function Profile() {
               alt=""
               className="profileSubImg"
             />
+
           </div>
           <div className="profileMain">
-            <div className="profileMainLeft">
+            {/* <div className="profileMainLeft"> */}
               <img 
                 src={user.profilePicture} 
                 alt=""
                 className="profileMainImg"
               />
-            </div>
-            <div className="profileMainRight">
+            {/* </div> */}
+            {/* <div className="profileMainRight"> */}
                 <span className="profileMainRightUserName">
                   {user.fullname}
                 </span>
-            </div>
+                 </div>
+            {/* </div> */}
             <hr className="profileHr"/>
           </div>
           
-        </div>
+       
         <div className="profileBottom">
           <div className="profileBottomLeft">
             <div className="profileBottomLeftTop">
