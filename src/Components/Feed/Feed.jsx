@@ -8,6 +8,7 @@ export default function Feed() {
     <div className="feed">
       <div className="feedWrapper">
         <Share />
+        {/* Hiển thị tất cả bài viết từ dữ liệu Posts */}
         {Posts.map((p) => (
           <Post key={p.id} post={p}/>
         ))}

@@ -1,7 +1,9 @@
+/* Wrapper chính của feed, chiếm phần lớn không gian layout */
 .feed{
     flex: 5.5;
 }
 
+/* Container bên trong feed, thêm padding quanh nội dung */
 .feedWrapper{
     padding: 20px;
 }

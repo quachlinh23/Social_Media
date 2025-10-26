@@ -1,3 +1,4 @@
+/* Container chính của bài post */
 .post{
     width: 100%;
     border-radius: 10px;
@@ -7,21 +8,25 @@
     transition: box-shadow 0.2s ease;
 }
 
+/* Padding bên trong bài post */
 .postWrapper{
     padding: 10px;
 }
 
+/* Header bài post: ảnh + tên + thời gian */
 .postTop{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+/* Phần trái header: ảnh + thông tin user */
 .postTopLeft{
     display: flex;
     align-items: center;
 }
 
+/* Ảnh đại diện user */
 .postProfileImg{
     width: 40px;
     height: 40px;
@@ -33,29 +38,35 @@
     cursor: pointer;
 }
 
+/* Nội dung bên cạnh ảnh: tên user + thời gian */
 .postTopLeftContent{
     margin-left: 10px;
 }
 
+/* Tên user và thời gian */
 .postUsername{
     font-size: 15px;
     font-weight: 500;
     margin: 0 10px;    
 }
 
+/* Hover tên user và ngày đăng */
 .postUserName:hover, .postDate:hover{
     text-decoration: underline;
     cursor: pointer;
 }
 
+/* Ngày đăng */
 .postDate{
     font-size: 12px;
 }
 
+/* Phần nội dung trung tâm: text + ảnh */
 .postCenter{
     margin: 20px 0;
 }
 
+/* Phần phải header: icon menu + đóng bài post */
 .postTopRight{
     display: flex;
     justify-content: flex-end;
@@ -70,13 +81,14 @@
     transition: background-color 0.2s ease;
 }
 
-
+/* Ảnh bài post */
 .postImg{
     margin-top: 10px;
     width: 100%;
     height: 550px;
 }
 
+/* Footer trên: like, comment, share count */
 .postBottomTop{
     display: flex;
     justify-content: space-between;
@@ -88,10 +100,12 @@
     gap: 10px;
 }
 
+/* Đường kẻ ngăn cách */
 .postHr{
     margin: 5px 0;
 }
 
+/* Hover text like, comment */
 .postLikeCounter, .postCommentText, .postCommentText{
     cursor: pointer;
 }
@@ -100,6 +114,7 @@
     text-decoration: underline;
 }
 
+/* Footer dưới: các nút thao tác */
 .postBottomBottom{
     display: flex;
     justify-content: space-between;
@@ -123,6 +138,7 @@
     border-radius: 5px;
 }
 
+/* Link không có style mặc định */
 .noLinkStyle {
   text-decoration: none;
   color: inherit;

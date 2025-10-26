@@ -9,12 +9,14 @@ import { useAuth } from '../context/AuthContext'
 // export default 
 function Post({post}) {
     const {user} = useAuth();
+    // State like và hiển thị chi tiết
     const [isLike, setisLike] = useState(false);
     const [like, setLike] = useState(post.like);
     const [detailPost, setDetailPost] = useState(false);
 
     //Thông tin của user là chủ bài post
     const PostUser = Users.find((u)=>(u.id === post.userId));
+    
     //Đường dẫn chuyển trang
     const path = Number(user.id) === post.userId ? "profile" : "visitProfile";
 
@@ -24,11 +26,13 @@ function Post({post}) {
         [post.id]
     );
     
+    // Xử lý like
     function LikeHandle() {
         setLike(isLike ? like - 1 : like + 1);
         setisLike(!isLike);
     }
 
+    // Toggle hiển thị chi tiết post
     function HandleDetailPost(){
         setDetailPost(!detailPost)
     }
@@ -36,6 +40,7 @@ function Post({post}) {
     return (
         <div className="post">
             <div className="postWrapper">
+                {/* Header bài post */}
                 <div className="postTop">
                     <div className="postTopLeft">
                         <Link to={`/${path}/${PostUser.id}`}>
@@ -60,6 +65,7 @@ function Post({post}) {
                     </div>
                 </div>
                 
+                {/* Nội dung bài post */}
                 <div className="postCenter">
                     <span className="postText">{post.desc}</span>
                     <img 
@@ -70,6 +76,8 @@ function Post({post}) {
                     />
                     <hr className="postHr"/>
                 </div>
+
+                {/* Footer bài post */}
                 <div className="postBottom">
                     <div className="postBottomTop">
                         <div className="postBottomTopLeft">
@@ -110,6 +118,8 @@ function Post({post}) {
                     </div>
                 </div>
             </div>
+
+            {/* Hiển thị chi tiết post */}
             {detailPost && 
                 <Postdetail 
                     OpenDetail={HandleDetailPost}

@@ -4,12 +4,15 @@ import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom';
 
 export default function PostAdd({handleClose, user}) {
+    // state lưu nội dung textarea
     const [content, setContain] = useState("");
     
+    // Hàm đóng popup
     function closeAdd(){
         handleClose();
     }
 
+    // Hàm xử lý khi click "Đăng"
     function handleAdd(){
         if (content){
             handleClose();
@@ -17,18 +20,19 @@ export default function PostAdd({handleClose, user}) {
         }
     }
 
-    // Chặn thao tác bên ngoài
+    // useEffect để chặn thao tác cuộn trang phía sau popup
     useEffect(() => {
         const originalStyle = window.getComputedStyle(document.body).overflow;
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // tắt scroll
         return () => {
-        document.body.style.overflow = originalStyle;
+        document.body.style.overflow = originalStyle; // reset khi unmount
         };
     }, []);
 
     return (
         <div className="PostAddWrapper">
             <div className="PostAddContain">
+                {/* header popup */}
                 <div className="PostAddContainTop">
                     <span className="PostAddContainTopTittle">
                         Tạo bài viết
@@ -38,6 +42,7 @@ export default function PostAdd({handleClose, user}) {
                         onClick = {closeAdd}
                     />
                 </div>
+                {/* nội dung trung tâm */}
                 <div className="PostAddContainCenter">
                     <div className="PostAddContainInfo">
                         <Link to={`/profile/${user.id}`}>
@@ -57,6 +62,7 @@ export default function PostAdd({handleClose, user}) {
                         className="PostAddContainText"
                         placeholder={`${user.fullname} ơi, bạn đang nghĩ gì thế?`}
                     />
+                    {/* Các tùy chọn thêm vào bài viết */}
                     <div className="optionPost">
                         <span className="optionPostTitle">Thêm vào bài viết của bạn</span>
                         <Photo 
@@ -91,6 +97,7 @@ export default function PostAdd({handleClose, user}) {
                         />
                     </div>
                 </div>
+                {/* Footer: nút Đăng */}
                 <div className="PostAddContainBottom">
                     <button 
                         className="BtnaddPost"

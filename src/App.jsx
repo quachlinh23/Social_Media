@@ -10,7 +10,7 @@ import Research from './Pages/Research/Research'
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop'
 import { AuthProvider, useAuth } from './Components/context/AuthContext'
 
-
+// Component bảo vệ route – chỉ cho phép truy cập khi đã đăng nhập
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
     if (!user) {
@@ -23,12 +23,14 @@ function App() {
   return (
     
     <BrowserRouter>
+    {/* Cung cấp context xác thực cho toàn bộ ứng dụng */}
     <AuthProvider >
       <ScrollToTop />
       <Routes>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>
 
+        {/*Các route yêu cầu đăng nhập */}
         <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>} />
         <Route path='/changePass' element={<ProtectedRoute><ChangePassWord /></ProtectedRoute>}/>
         <Route path='/profile/:id' element={<ProtectedRoute><Profile /></ProtectedRoute>}/>

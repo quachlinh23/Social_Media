@@ -1,7 +1,9 @@
+/* Container chính chứa tất cả quảng cáo */
 .AdsContain {
     width: 100%;
 }
 
+/* Mỗi quảng cáo riêng biệt */
 .AdsItem {
     display: flex;
     justify-content: center;
@@ -16,26 +18,31 @@
     position: relative;
 }
 
+/* Hiệu ứng khi hover vào quảng cáo */
 .AdsItem:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
+/* Phần trái và phải của quảng cáo chiếm 50% width */
 .AdsItemLeft, .AdsItemRight {
     width: 50%;
 }
 
+/* Hình ảnh bên trái */
 .AdsItemLeftImg {
     width: 100%;
     border-radius: 15px;
     object-fit: cover;
 }
 
+/* Text quảng cáo bên phải */
 .AdsItemRightText {
     font-size: 18px;
     font-weight: 500;
     color: #333;
 }
 
+/* Icon Close hiển thị khi hover */
 .IconItem{
     position: absolute;
     right: 10px;
@@ -43,6 +50,7 @@
     gap: 10px;
 }
 
+/* Khi không còn quảng cáo hiển thị */
 .NoAds{
     font-size: 18px;
     font-weight: 500;

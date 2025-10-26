@@ -1,3 +1,4 @@
+/* Wrapper danh sách bạn bè, hiển thị dạng grid 3 cột */
 .ListFriends {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -5,12 +6,14 @@
     margin-top: 10px;
 }
 
+/* Wrapper từng friend, căn giữa theo cột */
 .ListFriend {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Avatar của bạn bè */
 .FriendAvt  {
     width: 150px;
     height: 150px;
@@ -22,6 +25,7 @@
     cursor: pointer;
 }
 
+/* Tên bạn bè */
 .FriendName {
     margin-top: 5px;
     font-weight: 500;
@@ -33,7 +37,7 @@
     text-decoration: underline;
 }
 
-
+/* Thông báo khi chưa có bạn bè */
 .nofriend{
     grid-column: span 3;
     text-align: center;

@@ -1,6 +1,7 @@
+/* Wrapper chính của dropdown avatar */
 .dropDownAvatar {
   position: absolute;
-  top: 55px;
+  top: 50px;
   right: 10px;
   width: 280px;
   background: #fff;
@@ -12,13 +13,14 @@
   font-family: Arial, sans-serif;
 }
 
+/* Danh sách các tùy chọn */
 .OptionLists {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Profile item */
+/* Item hiển thị profile (avatar + tên) */
 .OtpionProfile {
   display: flex;
   align-items: center;
@@ -32,6 +34,7 @@
   background-color: #f5f6f8;
 }
 
+/* Avatar trong item profile */
 .OptionImg {
   width: 42px;
   height: 42px;
@@ -40,13 +43,14 @@
   border: 2px solid #f0f0f0;
 }
 
+/* Tên hiển thị trong item profile */
 .optionName {
   font-size: 15px;
   font-weight: 600;
   color: #1c1e21;
 }
 
-/* Other options */
+/* Các tùy chọn khác (đổi mật khẩu, đăng xuất) */
 .Option {
   font-size: 14px;
   font-weight: 500;

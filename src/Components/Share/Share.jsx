@@ -1,23 +1,25 @@
 import './Share.css'
 import { PermMedia,EmojiEmotions, Label } from '@mui/icons-material'
-import { Users } from '../../Data'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import PostAdd from '../PostAdd/PostAdd';
 import { useAuth } from '../context/AuthContext';
 
 export default function Share() {
-    const {user} = useAuth();
-    const currentUser = Users.find((us) => us.id === Number(user.id));
+    const {user} = useAuth(); // Lấy thông tin user từ context đăng nhập
+    const currentUser = user;
     const [openAddPost, setOpenAddPost] = useState(false);
 
+    // Hàm xử lý mở/đóng modal thêm bài viết
     function handleOpenAddPost(){
         setOpenAddPost(!openAddPost);
     }
+    
     return (
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop">
+                    {/*Link đến trang cá nhân*/}
                     <Link to={`/profile/${user.id}`}>
                         <img 
                             className="shareProfileImg" 
@@ -31,7 +33,9 @@ export default function Share() {
                         onClick={handleOpenAddPost}
                     />
                 </div>
+                {/*Đường ngăn cách*/}
                 <hr className="shareHr"/>
+                {/*Phần bên dưới*/}
                 <div className="shareBottom">
                     <div className="shareOptions">
                         <div className="shareOption"
@@ -70,6 +74,7 @@ export default function Share() {
                     </div>
                 </div>
             </div>
+            {/*Model thêm bài viết mới*/}
             {openAddPost && 
                 <PostAdd 
                     handleClose={handleOpenAddPost}

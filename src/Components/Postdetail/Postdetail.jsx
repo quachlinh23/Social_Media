@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike, likeCount}) {
-    const {user} = useAuth();
+    const {user} = useAuth(); //Lấy thông tin user hiện tại
 
     //Danh sách comment của một bài viết
     const ListComment = Comments.filter((comment) => comment.postId === idPost);
@@ -21,7 +21,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
     const [commentText, setCommentText] = useState("");
     const [countComment, setCountComment] = useState(ListComment.length);
 
-    // Chặn thao tác bên ngoài
+    // Chặn thao tác bên ngoài khi mở chi tiết bài viết
     useEffect(() => {
         const originalStyle = window.getComputedStyle(document.body).overflow;
         document.body.style.overflow = 'hidden';
@@ -30,16 +30,19 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
         };
     }, []);
 
+    // Ref input bình luận
     const inputRef = useRef(null);
-
+    // Focus input khi click vào bình luận
     const handleClick = () => {
         inputRef.current.focus();
     };
 
+    // Đóng chi tiết bài viết
     function closeDetail(){
         OpenDetail();
     }
 
+    // Thêm bình luận mới
     function handleComment(){
         if (commentText !== ""){
             setAddComment(pre=> [
@@ -55,17 +58,21 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
         }
     }
     
+    // Like bài viết
     function handleLike(){
         LikeHandle();
     }
 
+    // Nhấn Enter để bình luận
     const handleKey = (e) => {
         if(e.key === "Enter")
             handleComment()
     };
+
     return (
         <div className="postdetail">
             <div className="postdetailWrapper">
+                {/* Header bài viết */}
                 <div className="postdetailTop">
                     Bài viết của {PostUser.fullname}
                     <Close 
@@ -74,6 +81,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                     />
                 </div>
 
+                {/* Nội dung bài viết */}
                 <div className="postdetailCenter">
                     <div className="postdetailCenterTop">
                         <div className="postdetailCenterTopLeft">
@@ -104,7 +112,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                         alt="" 
                     />
                     <hr className="postdetailHr" />
-
+                    {/* Like, comment, share */}
                     <div className="postdetailBottom">
                         <div className="postdetailBottomTop">
                             <div className="postdetailBottomTopLeft">
@@ -137,7 +145,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                         </div>
                         <hr className="postdetailHr" />
                     </div>
-                    
+                    {/* Danh sách bình luận */}
                     <div className="postdetailListComment">
                         {
                             ListComment.length > 0 ? (
@@ -187,6 +195,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                                 )
                             )
                         }
+                        {/* Comment mới */}
                         {addComment.map((item) => {
                             const user = Users.find(u => u.id === item.userid);
                             return (
@@ -205,7 +214,7 @@ export default function Postdetail({OpenDetail, idPost,LikeHandle, isLikeisLike,
                         })}
                     </div>
                 </div>
-                
+                {/* Input bình luận */}
                 <div className="postDetailBottom">
                     <Link to={`/${path}/${user.id}`}>
                         <img 

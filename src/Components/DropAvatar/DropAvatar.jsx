@@ -3,10 +3,10 @@ import './DropAvatar.css'
 import { useAuth } from '../context/AuthContext';
 
 export default function DropAvatar({User}) {
-    const nagative = useNavigate();
-    const { logout } = useAuth();
+    const nagative = useNavigate(); // hook chuyển trang
+    const { logout } = useAuth(); // lấy hàm logout từ context
     
-    //Đăng xuất
+    //Hàm xử lý đăng xuất
     function HandleLogout(){
         logout();
         nagative("/login");
@@ -15,6 +15,7 @@ export default function DropAvatar({User}) {
     return (
         <div className="dropDownAvatar">
             <ul className="OptionLists">
+                {/* Link đến trang cá nhân */}
                 <Link to={`/profile/${User.id}`} className='noLinkStyle'>
                     <li 
                         className="OtpionProfile"
@@ -30,9 +31,13 @@ export default function DropAvatar({User}) {
                         </span>
                     </li>
                 </Link>
+
+                {/* Link đổi mật khẩu */}
                 <Link to={"/changePass"} className='noLinkStyle'>
                     <li className="Option">Đổi mật khẩu</li>
                 </Link>
+
+                {/* Tùy chọn đăng xuất */}
                 <li className="Option" onClick={HandleLogout}>
                     Đăng xuất
                 </li>

@@ -9,14 +9,15 @@ import { useState, useRef, useEffect } from "react";
 import { useAuth  } from "../context/AuthContext";
 
 export default function Topbar() {
-  const { user } = useAuth ();
+  const { user } = useAuth ();// Lấy thông tin người dùng từ context
 
-  const [query, setQuery] = useState("");
-  const [activeDropDown, setActiveDropDown] = useState(null); // "account" | "notification" | "chat" | "friend"
+  const [query, setQuery] = useState(""); // Từ khóa tìm kiếm
+  const [activeDropDown, setActiveDropDown] = useState(null); //trạng thái mở dropdown "account" | "notification" | "chat" | "friend"
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Hàm bật/tắt dropdown tương ứng
   function toggleDropDown(type) {
     setActiveDropDown(activeDropDown === type ? null : type);
   }
@@ -54,12 +55,14 @@ export default function Topbar() {
 
   return (
     <div className="topbarContainer">
+      {/* Bên trái - Logo */}
       <div className="topbarLeft">
         <Link to='/' className="noLinkStyle">
           <span className="logo">SocialMedia</span>
         </Link>
       </div>
 
+      {/* Ở giữa - Thanh tìm kiếm */}
       <div className="topbarCenter">
         <div className="searchbar">
           <Search className="searchIcon" onClick={handleSearch}/>
@@ -75,8 +78,10 @@ export default function Topbar() {
         </div>
       </div>
 
+      {/* Bên phải - Các biểu tượng và menu tài khoản */}
       <div className="topbarRight" ref={dropdownRef}>
         <div className="topbarIcons">
+          {/* Biểu tượng lời mời kết bạn */}
           <div className="topbarIconItem">
             <Person
               onClick={() => toggleDropDown("friend")}
@@ -85,6 +90,7 @@ export default function Topbar() {
             />
             <span className="topbarIconBadge">1</span>
           </div>
+          {/* Biểu tượng tin nhắn */}
           <div className="topbarIconItem">
             <Message
               onClick={() => toggleDropDown("chat")}
@@ -93,6 +99,7 @@ export default function Topbar() {
             />
             <span className="topbarIconBadge">1</span>
           </div>
+          {/* Biểu tượng thông báo */}
           <div className="topbarIconItem">
             <Notifications
               onClick={() => toggleDropDown("notification")}
@@ -102,7 +109,7 @@ export default function Topbar() {
             <span className="topbarIconBadge">7</span>
           </div>
         </div>
-
+        {/* Ảnh đại diện của người dùng */}
         <img
           src={user.profilePicture}
           alt=""
@@ -110,7 +117,8 @@ export default function Topbar() {
           onClick={() => toggleDropDown("account")}
           title="Tài khoản"
         />
-
+        
+        {/* Hiển thị dropdown tương ứng */}
         {activeDropDown === "account" && user ? (
           <DropAvatar User={user}/>
         ) : null}

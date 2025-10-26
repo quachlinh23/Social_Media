@@ -6,18 +6,22 @@ import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 export default function ChatWindown({ onClose, openMini, idFriend}) {
-    const {user} = useAuth();
-    const InfoFriend = Users.find((us) => us.id === idFriend)
-    const [messageText, setMessageText] = useState("");
-    const [messageDisplay, setMessageDisplay] = useState([]);
+    const {user} = useAuth(); // Lấy thông tin user hiện tại từ context
+    const InfoFriend = Users.find((us) => us.id === idFriend) // Lấy thông tin người nhắn tin từ danh sách người dùng
+    const [messageText, setMessageText] = useState(""); // state lưu text đang nhập
+    const [messageDisplay, setMessageDisplay] = useState([]); // state lưu tin nhắn mới gửi
 
+    //Hàm đóng cửa sổ chat
     function HandleClose(){
         onClose();
     }
 
+    //Hàm thu nhỏ cửa sổ chat
     function HandleMinimun(){
         openMini();
     }
+
+    //Hàm gửi tin nhắn thêm tin nhắn mới vào messageDisplay
     function handleChat(){
         if (messageText !== ""){
             setMessageDisplay(pre=> [
@@ -27,14 +31,17 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
         }
     }
 
+    //Hàm bắt sự kiện nhấn phím enter để gửi tin nhắn
     function handleKey(e) {
         if (e.key==="Enter"){
             handleChat();
         }
     }
+
     return (
         <div className="chatWrapper">
             <div className="chatTop">
+                {/* Phần header chat */}
                 <Link to={`/visitProfile/${InfoFriend.id}`}>
                     <img 
                         src={InfoFriend.profilePicture}
@@ -64,7 +71,9 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
                     titleAccess="Đóng đoạn chat"
                 />
             </div>
+            {/* Phần hiển thị tin nhắn */}
             <div className="chatContainer">
+                {/* Lọc và hiển thị tin nhắn cũ giữa user và friend */}
                 {Messages.filter(ms => 
                     (ms.idSend === user.id && ms.idReceive === InfoFriend.id) ||
                     (ms.idSend === InfoFriend.id && ms.idReceive === user.id)
@@ -91,6 +100,7 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
                         </div>
                     )
                 ))}
+                {/* Hiển thị tin nhắn mới gửi */}
                 {messageDisplay.map((ms) => (
                     <div className="chatSend">
                         <span className="chatSendText">
@@ -99,6 +109,7 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
                     </div>
                 ))}
             </div>
+            {/* Phần nhập tin nhắn */}
             <div className="chatBottom">
                 <Mic className="IconChatBottom"/>
                 <Photo className="IconChatBottom"/>
@@ -108,8 +119,8 @@ export default function ChatWindown({ onClose, openMini, idFriend}) {
                     placeholder="Nhập tin nhắn..." 
                     className="chatInput"
                     value={messageText}
-                    onChange={(e) => setMessageText(e.target.value)}
-                    onKeyDown={handleKey}
+                    onChange={(e) => setMessageText(e.target.value)} //cập nhật state khi gõ
+                    onKeyDown={handleKey} //Sự kiện nhắn phím enter
                 />
                 <button 
                     className="chatSendBtn"

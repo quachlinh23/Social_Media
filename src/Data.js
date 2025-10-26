@@ -1,3 +1,4 @@
+//Danh sách bài đăng
 export const Posts = [
   {id: 1,desc: "Love all my friends",photo: "/assets/Post/Post1.jpg",date: "5 phút",userId: 1,like: 33,share: 9,},
   {id: 2,desc: "Chilling on the beach",photo: "/assets/Post/Post2.jpg",date: "10 phút",userId: 2,like: 26,share: 5,},
@@ -11,6 +12,7 @@ export const Posts = [
   {id: 10,desc: "Road trip 🚗",photo: "/assets/Post/Post10.jpg",date: "50 phút",userId: 10,like: 28,share: 5,},
 ];
 
+//Danh sách bình luận
 export const Comments = [
   {id: 1,postId: 2,userId: 2,text: "Đẹp quá, Anna!",},
   {id: 2,postId: 2,userId: 3,text: "Mình cũng thích bức này.",},
@@ -27,6 +29,7 @@ export const Comments = [
   {id: 13,postId: 10,userId: 8,text: "Đường dài nhớ lái xe cẩn thận 🚗",},
 ];
 
+//Danh sách người dùng
 export const Users = [
   {
     id: 1,
@@ -140,6 +143,7 @@ export const Users = [
   },
 ];
 
+//Danh sách tin nhắn
 export const Messages = [
   {id: 1,idSend: 1,idReceive: 2,text: "Chào John, bạn khỏe không?",},
   {id: 2,idSend: 2,idReceive: 1,text: "Mình khỏe, cảm ơn Anna! Còn bạn?",},

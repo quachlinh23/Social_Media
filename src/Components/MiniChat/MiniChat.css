@@ -1,3 +1,4 @@
+/* Wrapper mini chat, hiển thị ở góc dưới bên phải màn hình */
 .minichat{
     position: absolute;
     z-index: 10000;
@@ -6,6 +7,7 @@
     position: fixed
 }
 
+/* Avatar mini chat */
 .miniChat{
     width: 40px;
     height: 40px;
@@ -13,6 +15,7 @@
     cursor: pointer;
 }
 
+/* Nút đóng mini chat */
 .miniChatIcon {
     position: absolute;
     top: -1px;
@@ -24,10 +27,13 @@
     display: none;
     z-index: 10;
 }
+
+/* Hiển thị nút đóng khi hover vào mini chat */
 .minichat:hover .miniChatIcon {
     display: block;
 }
 
+/* Chấm trạng thái online */
 .miniChatActive{
     position: absolute;
     right: 0;

@@ -1,3 +1,4 @@
+/* Thanh bên (Sidebar) */
 .sidebar{
     flex: 3;
     height: calc(100vh - 50px);
@@ -7,20 +8,24 @@
     scrollbar-gutter: stable;
 }
 
+/* Bao bọc nội dung của sidebar */
 .sidebarWrapper{
     padding: 20px;
 }
 
+/* Hiển thị thanh cuộn khi hover */
 .sidebar:hover {
     overflow-y: auto;
 }
 
+/* Danh sách các mục trong sidebar */
 .sidebarList{
     padding: 0;
     margin: 0;
     list-style: none;
 }
 
+/* Từng mục trong danh sách */
 .sidebarListItem {
     display: flex;
     align-items: center;
@@ -31,14 +36,17 @@
     border-radius: 8px;
 }
 
+/* Hiệu ứng hover cho mục danh sách */
 .sidebarListItem:hover {
     background-color: #e1e1e1;
 }
 
+/* Biểu tượng của từng mục */
 .sidebarIcon {
     margin-right: 20px;
 }
 
+/* Ảnh đại diện trong sidebar */
 .avatarImg{
     width: 35px;
     height: 35px;
@@ -47,25 +55,29 @@
     margin-right: 10px;
 }
 
+/* Văn bản của từng mục */
 .sidebarListItemText {
     font-size: 16px;
     font-weight: 500;
     color: #333;
 }
 
-
+/* Tiêu đề của nhóm mục trong sidebar */
 .TitleSidebar{
     padding: 8px 8px;
     font-size: 17px;
     font-weight: 500;
     color: #333; 
 }
+
+/* Đường gạch phân cách */
 .sidebarHr {
     margin: 20px 0;
     border: none;
     border-top: 1px solid #ccc;
 }
 
+/* Loại bỏ định dạng của liên kết */
 .noLinkStyle {
     text-decoration: none;
     color: inherit;

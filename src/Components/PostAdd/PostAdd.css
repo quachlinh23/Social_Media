@@ -1,3 +1,4 @@
+/* Nền mờ toàn màn hình khi popup mở */
 .PostAddWrapper {
   position: fixed;
   top: 0;
@@ -12,6 +13,7 @@
   overflow: hidden;
 }
 
+/* Container chính của popup */
 .PostAddContain {
   width: 470px;
   max-height: 90vh;
@@ -24,6 +26,7 @@
   padding: 15px;
 }
 
+/* Header popup: chứa tiêu đề và nút đóng */
 .PostAddContainTop {
   position: relative;
   display: flex;
@@ -35,6 +38,7 @@
   font-size: 18px;
 }
 
+/* Nút đóng popup */
 .btnClose {
   position: absolute;
   right: 10px;
@@ -50,79 +54,92 @@
 .btnClose:hover {
   opacity: 0.8;
 }
+
+/* Thông tin người dùng: avatar + tên */
 .PostAddContainInfo{
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
+/* Avatar user */
 .PostAddContainInfoImg{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-    object-fit: cover;
-    cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  cursor: pointer;
 }
 
+/* Textarea nhập nội dung */
 .PostAddContainText{
-    width: 100%;
-    border: none;
-    outline: none;
-    resize: none;
-    overflow-y: auto;
-    min-height: 300px;
-    font-size: 16px;
-    margin-bottom: 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+  min-height: 300px;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
+/* Khung chứa các tùy chọn thêm vào bài viết */
 .optionPost{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  cursor: pointer;
 }
 
+/* Tiêu đề các tùy chọn */
 .optionPostTitle{
-    font-weight: 500;
+  font-weight: 500;
 }
 
+/* Icon các tùy chọn: ảnh, tag, cảm xúc, check-in... */
 .optionPostIcon{
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
+
+/* Hover icon: hiệu ứng nền tròn */
 .optionPostIcon:hover{
-    border-radius: 50%;
-    background-color: #e0e0e0;
+  border-radius: 50%;
+  background-color: #e0e0e0;
 }
 
+/* Footer chứa nút Đăng */
 .PostAddContainBottom{
-    width: 100%;
+  width: 100%;
 }
 
+/* Nút đăng bài */
 .BtnaddPost{
-    width: 100%;
-    border-radius: 5px;
-    background-color: #0866ff;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #0866ff;
+  padding: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
+/* Hover nút đăng bài */
 .BtnaddPost:hover{
-    background-color: #0866ff;
-    opacity: 0.8;
+  background-color: #0866ff;
+  opacity: 0.8;
 }
 
+/* Khi nút disabled */
 .BtnaddPost:disabled {
   background-color: #ccc; /* xám khi disabled */
   cursor: not-allowed;

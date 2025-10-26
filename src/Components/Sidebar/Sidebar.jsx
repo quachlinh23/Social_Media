@@ -7,24 +7,23 @@ import { People, Groups, History, TurnedIn, InsertInvitation,
  } from '@mui/icons-material'
 import './Sidebar.css'
 import { Link } from 'react-router-dom'
-import { Users } from '../../Data'
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 export default function Sidebar() {
-  const {user} = useAuth();
-  // const userId = localStorage.getItem("UserId");
-  // const curentUser = Users.find((us) => us.id === Number(userId));
+  const {user} = useAuth();// lấy user hiện tại từ context
   const [extend, setExtend] = useState(false);
 
+  // hàm xử lý khi click vào “Xem thêm” hoặc “Ẩn bớt”
   function handleExtend() {
     setExtend(!extend);
   }
-
+  
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
+          {/* mục đầu tiên: hiển thị tên và ảnh người dùng, click vào sẽ dẫn đến trang cá nhân */}
           <Link to={`/profile/${user.id}`} className="noLinkStyle">
             <li className="sidebarListItem">
               <div className="avatar">
@@ -39,6 +38,7 @@ export default function Sidebar() {
               </span>
             </li>
           </Link>
+          {/* các mục chức năng chính */}
           <li className="sidebarListItem">
             <People 
               className="sidebarIcon"
@@ -84,7 +84,7 @@ export default function Sidebar() {
               Đã lưu
             </span>
           </li>
-
+          {/* nếu extend = true thì hiển thị thêm danh sách mở rộng */}
           {extend && 
           <>
             <li className="sidebarListItem">
@@ -136,6 +136,7 @@ export default function Sidebar() {
             </li>
           </>
           }
+          {/* nút xem thêm / ẩn bớt */}
           <li className="sidebarListItem" onClick={handleExtend}>
             {!extend ? 
               <ExpandMore className="sidebarIcon" /> :

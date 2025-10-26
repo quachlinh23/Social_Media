@@ -1,3 +1,4 @@
+/* ----- Khung overlay hiển thị chi tiết bài viết ----- */
 .postdetail {
   position: fixed;
   top: 0;
@@ -12,6 +13,7 @@
   overflow: hidden;
 }
 
+/* ----- Hộp chứa nội dung chi tiết bài viết ----- */
 .postdetailWrapper {
   width: 600px;
   max-height: 90vh;
@@ -23,6 +25,7 @@
   overflow: hidden;
 }
 
+/* ----- Thanh tiêu đề trên cùng (hiển thị tên + nút đóng) ----- */
 .postdetailTop {
   position: relative;
   display: flex;
@@ -34,6 +37,7 @@
   font-size: 18px;
 }
 
+/* Nút đóng (icon dấu X) */
 .btnClose {
   position: absolute;
   right: 10px;
@@ -50,12 +54,14 @@
   opacity: 0.8;
 }
 
+/* ----- Phần nội dung chính của bài viết ----- */
 .postdetailCenter {
   flex: 1;
   overflow-y: auto;
   padding: 10px;
 }
 
+/* Header của phần bài viết (avatar + tên + ngày đăng + more icon) */
 .postdetailCenterTop {
   display: flex;
   justify-content: space-between;
@@ -72,20 +78,25 @@
   margin-left: 10px;
 }
 
+/* Tên người đăng */
 .postdetailUserName {
   font-weight: 500;
   font-size: 15px;
   cursor: pointer;
 }
 
+/* Ngày đăng */
 .postdetailDate {
   font-size: 12px;
   color: gray;
   cursor: pointer;
 }
+
+/* Hiệu ứng hover cho tên + ngày */
 .postdetailUserName:hover,.postdetailDate:hover{
   text-decoration: underline;
 }
+
 /* More icon */
 .postdetailTopRight {
   cursor: pointer;
@@ -97,6 +108,7 @@
   transition: background-color 0.2s ease;
 }
 
+/* ----- Phần text và ảnh bài viết ----- */
 .postdetailText {
   display: block;
   margin-bottom: 10px;
@@ -108,12 +120,14 @@
   margin-bottom: 10px;
 }
 
+/* ----- Đường kẻ phân cách ----- */
 .postdetailHr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 5px 0;
 }
 
+/* ----- Khu vực nút like - comment - share ----- */
 .postdetailBottomBottom {
   display: flex;
   justify-content: space-between;
@@ -130,6 +144,7 @@
   gap: 10px;
 }
 
+/* Các dòng thông tin lượt thích, bình luận, chia sẻ */
 .postdetailLikeCounter, .postdetailCommentText,
 .postdetailCommentText {
   cursor: pointer;
@@ -140,6 +155,7 @@
 
 }
 
+/* Nút like/comment/share */
 .postdetailButton {
   flex: 1;
   display: flex;
@@ -157,9 +173,11 @@
   background-color: #f0f2f5;
 }
 
+/* ----- Danh sách bình luận ----- */
 .postdetailListComment{
   margin-top: 15px;
 }
+
 .CommentItem {
   display: flex;
   align-items: flex-start;
@@ -199,6 +217,7 @@
   line-height: 1.4;
 }
 
+/* ----- Phần nhập bình luận ----- */
 .postDetailBottom {
   display: flex;
   align-items: center;
@@ -224,6 +243,7 @@
   cursor: pointer;
 }
 
+/* ----- Trạng thái khi chưa có bình luận ----- */
 .NoCommentItem {
   display: flex;
   flex-direction: column;

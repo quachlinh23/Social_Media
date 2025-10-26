@@ -3,6 +3,7 @@ import './Register.css'
 import { useEffect, useState } from 'react'
 
 export default function Register() {
+    // Khai báo state cho các trường nhập liệu
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [gender, setGender] = useState("");
@@ -12,12 +13,15 @@ export default function Register() {
     const [day, setDay] = useState("");
     const [month, setMonth] = useState("");
     const [year, setYear] = useState("");
+    // Tạo danh sách ngày, tháng, năm cho dropdown
     const days = Array.from({ length: 31 }, (_, i) => i + 1);
     const months = Array.from({ length: 12 }, (_, i) => i + 1);
     const years = Array.from({ length: 2025 - 1950 + 1 }, (_, i) => 2025 - i);
     const [listcountry, setListCountry] = useState([]);
     const [country, setCountry] = useState([]);
     const navigate = useNavigate();
+
+    // Xử lý khi người dùng nhấn nút đăng ký
     function handleRegister(){
         if(firstName === "" ||lastName === "" || gender === "" 
             || email === "" || passWord === ""||
@@ -35,6 +39,7 @@ export default function Register() {
             }
         }
     }
+    // Lấy danh sách quốc gia từ API khi component được render lần đầu
     useEffect(()=>{
         fetch('https://restcountries.com/v3.1/all?fields=cca2,name,flags')
         .then(res => res.json())
@@ -53,15 +58,18 @@ export default function Register() {
     return (
         <div className="register">
             <div className="registerWrapper">
+                {/* Bên trái - giới thiệu */}
                 <div className="registerLeft">
-                <h3 className="registerLogo">Social Media</h3>
-                <span className="registerDesc">Kết nối bạn bè, chia sẻ mọi khoảnh khắc.</span>
+                    <h3 className="registerLogo">Social Media</h3>
+                    <span className="registerDesc">Kết nối bạn bè, chia sẻ mọi khoảnh khắc.</span>
                 </div>
+                {/* Bên phải - form đăng ký */}
                 <div className="registerRight">
                     <div className="registerBox">
                         <span className="titleregister">Đăng Kí Tài Khoản</span>
+                        {/* Nhập họ và tên */}
                         <div className="FullName">
-                            <div className="FullNameContain">
+                            <div className="FullNameContain"> 
                                 <input 
                                     placeholder="Họ" 
                                     className="firstName" 
@@ -77,7 +85,8 @@ export default function Register() {
                                 />
                             </div>
                         </div>
-                        
+
+                        {/* Chọn giới tính */}
                         <div className="genderGroup">
                             <label className="titleGender">Giới tính</label>
                             <div className="genderGroupContain">
@@ -112,6 +121,7 @@ export default function Register() {
                             </div>
                         </div>
 
+                        {/* Chọn ngày sinh */}
                         <div className="dobGroup">
                             <label className="titleBirthday">Ngày sinh</label>
                             <div className="dobGroupContain">
@@ -153,6 +163,7 @@ export default function Register() {
                                 </select>
                             </div>
                         </div>
+                        {/* Chọn quốc gia */}
                         <div className="CountryGroup">
                             <label className="titleCountry">Quốc gia</label>
                             <div className="countryContain">
@@ -170,6 +181,7 @@ export default function Register() {
                                 </select>
                             </div>
                         </div>
+                        {/* Nhập email và mật khẩu */}
                         <input 
                             placeholder="Email" 
                             className="registerInput"
@@ -184,16 +196,19 @@ export default function Register() {
                             onChange={(e) => setPassWord(e.target.value)}
                             autoComplete="new-password"
                         />
+                        {/* Hiển thị lỗi nếu có */}
                         {error &&
                             <span className="errorForm">{error}</span>
                         }
+                        {/* Nút đăng ký */}
                         <button 
                             className="buttonregister"
                             onClick={handleRegister}
                         >
                                 Đăng kí
                         </button>
-
+                        
+                        {/* Chuyển hướng sang trang đăng nhập */}
                         <div className="TextChoice">
                             <Link to={"/login"} className="noLinkStyle">
                                 <span className="buttonLogin">

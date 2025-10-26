@@ -12,48 +12,16 @@ export default function Login() {
   const navigate = useNavigate();
   const {login} = useAuth();
 
-
-  /*Xử lý login*/
-  // function handleLogin() {
-  //   if (email === '' || password === ''){
-  //     setError("Vui lòng nhập đầy đủ thông tin");
-  //   } else{
-  //     setError('');
-  //     const user = Users.find((us) => (us.email === email));
-  //     if (!user){
-  //       setError("Tên đăng nhập hoặc mật khẩu không đúng");
-  //     }else{
-  //       if (user.password === password) {
-  //         navigate("/");
-  //         localStorage.setItem("UserId", user.id)
-  //       }else {
-  //         setError("Tên đăng nhập hoặc mật khẩu không đúng");
-  //       }
-  //     }
-  //   }
-  // }
-
-  // const handleLogin = async (e) => {
-  //   e.preventDefault(); // Ngăn form reload
-  //   try {
-  //     await login(email, password);
-  //     setError("");
-  //   } catch (err) {
-  //     setError(err.message);
-  //   }
-  // };
-
-
   const handleLogin = () => {
-  try {
-    login(email, password);
-    setError('');
-    navigate('/');
-  } catch (err) {
-    setError(err.message);
-  }
-};
-
+    const result = login(email, password); // trả về {success, message}
+    
+    if (result.success) {
+      setError('');
+      navigate('/');
+    } else {
+      setError(result.message); // Hiển thị lỗi đúng
+    }
+  };
 
   return (
     <div className="login">

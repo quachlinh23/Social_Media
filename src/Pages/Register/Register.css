@@ -1,3 +1,4 @@
+/*Toàn bộ khung trang đăng ký */
 .register {
   width: 100vw;
   height: 100vh;
@@ -7,17 +8,23 @@
   justify-content: center;
 }
 
+/*Khung tổng chứa hai bên trái - phải */
 .registerWrapper {
   width: 70%;
   height: 80%;
   display: flex;
 }
+/*Bên trái (phần giới thiệu) */
 .registerLeft{
   width: 60%;
 }
+
+/*Bên phải (form đăng ký) */
 .registerRight{
   width: 40%;
 }
+
+/* Căn chỉnh nội dung dọc giữa cho cả hai bên */
 .registerLeft,
 .registerRight {
   display: flex;
@@ -25,6 +32,7 @@
   justify-content: center;
 }
 
+/* Logo tiêu đề */
 .registerLogo {
   font-size: 50px;
   font-weight: 800;
@@ -32,10 +40,12 @@
   margin-bottom: 10px;
 }
 
+/* Mô tả ngắn */
 .registerDesc {
   font-size: 24px;
 }
 
+/* Khung chứa form đăng ký */
 .registerBox {
   height: 550px;
   padding: 25px;
@@ -48,6 +58,7 @@
   
 }
 
+/* Tiêu đề trong form */
 .titleregister {
   font-size: 30px;
   text-align: center;
@@ -56,14 +67,18 @@
   margin-bottom: 5px;
 }
 
+/* Nhóm nhập họ tên */
 .FullName{
   width: 100%;
 }
+
 .FullNameContain{
   display: flex;
   gap: 10px;
   width: 100%;
 }
+
+/* Ô nhập liệu chung */
 .registerInput{
   height: 45px;
   border-radius: 10px;
@@ -72,6 +87,8 @@
   padding-left: 15px;
   transition: border 0.2s ease;
 }
+
+/* Ô nhập họ và tên */
 .firstName, .lastName{
   flex: 1;
   height: 35px;
@@ -83,6 +100,7 @@
   padding-left: 10px
 }
 
+/* Nhóm giới tính, ngày sinh, quốc gia */
 .genderGroupContain, .dobGroupContain, .countryContain{
   display: flex;
   gap: 10px;
@@ -91,10 +109,7 @@
   margin-top: 10px;
 }
 
-/* .dobGroup{
-  margin-bottom: 10px;
-} */
-
+/* Ô chọn giới tính, ngày, tháng, năm, quốc gia */
 .genderMan, .genderWoMen, .genderDiff, .selectBirthday, .selectcountry{
   border: 1px solid gray;
   width: 100%;
@@ -106,6 +121,7 @@
   cursor: pointer;
 }
 
+/* Nút đăng ký */
 .buttonregister {
   height: 50px;
   border-radius: 10px;
@@ -122,6 +138,7 @@
   background-color: #0d5bdd;
 }
 
+/* Nút dẫn sang đăng nhập */
 .buttonLogin {
   text-align: center;
   color: #0866ff;

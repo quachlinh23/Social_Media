@@ -5,7 +5,9 @@ import './Rightbar.css'
 import { useAuth } from '../context/AuthContext';
 
 export default function Rightbar() {
-  const { user } = useAuth();
+  const { user } = useAuth(); // Lấy thông tin user hiện tại từ context
+  
+  // Hàm kiểm tra xem hôm nay có phải sinh nhật của user hay không
   function isBirthday(date) {
     const NowDate = new Date();
     const birthdayUser = new Date(date);
@@ -13,11 +15,13 @@ export default function Rightbar() {
          NowDate.getMonth() === birthdayUser.getMonth();
   }
 
+  // Lọc danh sách người dùng có sinh nhật hôm nay
   const ListBirthday = Users.filter((us) => isBirthday(us.birthday));
 
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
+        {/* --- KHU VỰC SINH NHẬT --- */}
         {ListBirthday.length > 0 && (
           <>
             <h4 className="BirthdayTitle">Sinh nhật</h4>
@@ -38,16 +42,16 @@ export default function Rightbar() {
             <hr className="hrRightbar"/>
           </>
         )}
+        {/* --- KHU VỰC QUẢNG CÁO --- */}
         <h4 className="Ads">Được tài trợ</h4>
         <div className="ads">
           <Ads />
           <Ads />
         </div>
         <hr className="hrRightbar"/>
+        {/* --- DANH SÁCH NGƯỜI LIÊN HỆ (ONLINE) --- */}
         <h4 className="rightbarTitle">Người liên hệ</h4>
-        <Online 
-          idUs={user.id}
-        />
+        <Online />
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+/* Wrapper toàn bộ thông báo */
 .notification {
     position: absolute;
     top: 50px;
@@ -13,10 +14,12 @@
     scrollbar-gutter: stable;
 }
 
+/* Hiển thị thanh cuộn khi hover */
 .notification:hover {
     overflow-y: auto;
 }
 
+/* Tiêu đề thông báo */
 .notificationTittle {
     padding: 12px 16px;
     font-size: 18px;
@@ -26,12 +29,14 @@
     background-color: #f9fafb;
 }
 
+/* Danh sách thông báo */
 .notificationList {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/* Từng mục thông báo */
 .notificationItem {
     display: flex;
     align-items: center;
@@ -41,11 +46,13 @@
     transition: background-color 0.2s ease;
 }
 
+/* Hover từng mục thông báo */
 .notificationItem:hover {
     background-color: #f0f2f5;
     border-radius: 8px;
 }
 
+/* Wrapper avatar + icon */
 .UserImgWrapper {
     position: relative;
     display: inline-block;
@@ -53,6 +60,7 @@
     height: 50px;
 }
 
+/* Avatar người dùng */
 .UserImg {
     width: 40px;
     height: 40px;
@@ -60,6 +68,7 @@
     object-fit: cover;
 }
 
+/* Icon hành động (comment, video, flag) */
 .IconAddComment, .IconAddVideo, .IconAddFlag {
     position: absolute;
     bottom: 2px;
@@ -73,17 +82,23 @@
     align-items: center;
     justify-content: center;
 }
+
+/* Icon comment */
 .IconAddComment{
     background-color: #42b72a;
 }
+
+/* Icon video */
 .IconAddVideo{
     background-color: blue;
 }
+
+/* Icon flag */
 .IconAddFlag{
     background-color: orange;
 }
 
-/* text */
+/* Nội dung thông báo */
 .TextNotification {
     font-size: 16px;
     color: #050505;

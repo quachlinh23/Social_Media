@@ -3,17 +3,20 @@ import { Users } from '../../Data'
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-export default function ListFriend( {id} ) {
-    const { user } = useAuth();
+export default function ListFriend() {
+    const { user } = useAuth();// Lấy thông tin user hiện tại
+    
+    // Lấy danh sách id bạn bè, nếu không có thì mặc định rỗng
+    const List =  user?.friends || [];
 
-    const currentUser = Users.find((us) => us.id === Number(id));
-    const List =  currentUser?.friends || [];
+    // Lọc thông tin chi tiết của bạn bè từ Users
     const ListFriend = Users.filter(
         (userFriend) => List.includes(userFriend.id)
     );
  
     return (
         <div className="ListFriends">
+            {/*Nếu có bạn bè*/}
             {ListFriend.length > 0 ? (
                 ListFriend.map((friend) => (
                     <div className="ListFriend" key={friend.id}>
@@ -40,7 +43,7 @@ export default function ListFriend( {id} ) {
                     </div>
                 ))
             ) : (
-                <p className="nofriend">Chưa có bạn bè</p>
+                <p className="nofriend">Chưa có bạn bè</p> //Nếu chưa có bạn bè
             )}       
         </div>
     )
