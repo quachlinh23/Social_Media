@@ -47,46 +47,41 @@ export default function FriendVisit() {
         <div className="friendVisitTop">
             <div className="friendVisitSub">
                 <img 
-                src={FriendInfo.profilePicture}
-                alt=""
-                className="friendVisitSubImg"
+                  src={FriendInfo.profilePicture}
+                  alt=""
+                  className="friendVisitSubImg"
                 />
             </div>
 
-
             <div className="friendVisitMain">
-                <div className="friendVisitMainInfo">
-                    <img
-                        src={FriendInfo.profilePicture} 
-                        alt=""
-                        className="friendVisitMainImg"
-                    />
-                    <span className="friendVisitMainRightUserName">
-                    {FriendInfo.fullname}
-                    </span>
-              
-
+              <div className="friendVisitMainInfo">
+                <img
+                  src={FriendInfo.profilePicture} 
+                  alt=""
+                  className="friendVisitMainImg"
+                />
+                <span className="friendVisitMainRightUserName">
+                  {FriendInfo.fullname}
+                </span>
                 <div className="friendVisitMainBtns">
-                    <button className="btnFriend" 
-                      onClick={HandleFriend}
-                      title={friendState ? "Hủy kết bạn" : "Gửi lời mời"}
-                    >
-                      {friendState ? <Person /> : <PersonAdd />}
-                      {friendState ? "Bạn bè" : "Thêm bạn bè"}
-                    </button>
+                  <button className="btnFriend" 
+                    onClick={HandleFriend}
+                    title={friendState ? "Hủy kết bạn" : "Gửi lời mời"}
+                  >
+                    {friendState ? <Person /> : <PersonAdd />}
+                    {friendState ? "Bạn bè" : "Thêm bạn bè"}
+                  </button>
                   <button 
                     className="btnMessage"
                     onClick={OpenChat}
                   >
                     <Message /> Nhắn tin
                   </button>
-                   </div>
-               
-        </div>
-         </div>
-                <hr className="friendVisitHr"/>
+                </div> 
+              </div>
             </div>
-        
+        </div>
+        <hr className="friendVisitHr"/>
         <div className="friendVisitBottom">
           <div className="friendVisitBottomLeft">
             <div className="friendVisitBottomLeftTop">

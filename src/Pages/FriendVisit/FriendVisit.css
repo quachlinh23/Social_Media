@@ -1,94 +1,98 @@
 .friendVisit{
-    width: 100%;
+  width: 100%;
 }
 
 .friendVisitTop{
-    width: 100%;
+  width: 100%;
 }
 
 .friendVisitSub{
-    width: 90%;
-    margin: 0 auto;
-    position: relative;
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .friendVisitSubImg{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.friendVisitMain {
+  position: relative;
 }
 
 .friendVisitMainImg {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    position: absolute;
-    left: 15%;
-    bottom: 250px;
-    transform: translateX(-50%);
-    border: 5px solid white;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 15%;
+  bottom: -110px;
+  transform: translateX(-50%);
+  border: 5px solid white;
 }
 
 .friendVisitMainRightUserName{
-    position: absolute;
-    left: 23%;
-    bottom: 310px;
-    font-size: 30px;
-    font-weight: bold;
+  position: absolute;
+  left: 23%;
+  bottom: -50px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .friendVisitMainBtns{
-    display: flex;
-    position: absolute;
-    right: 7%;
-    bottom: 310px;
-    gap: 10px;
+  display: flex;
+  position: absolute;
+  right: 7%;
+  bottom: -50px;
+  gap: 10px;
 }
 
 .btnMessage{
-    background-color: #0866ff;
-    border: none;
-    width: 120px;
-    height: 30px;
-    font-size: 15px;
-    font-weight: bold;
-    color: white;
-    border-radius: 9px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  background-color: #0866ff;
+  border: none;
+  width: 120px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .btnMessage:hover{
-    background-color: #0866ff;
-    opacity: 0.8;
+  background-color: #0866ff;
+  opacity: 0.8;
 }
 
 .btnFriend{
-    border: none;
-    /* width: 120px; */
-    height: 30px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #361d15;
-    border-radius: 9px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+  border: none;
+  /* width: 120px; */
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #361d15;
+  border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .btnFriend:hover{
-    opacity: 0.8;
+  opacity: 0.8;
 }
 .friendVisitHr{
-    margin-top: 130px;
-    width: 90%;
-    margin: 130px auto 20px auto; 
+  margin-top: 130px;
+  width: 90%;
+  margin: 130px auto 20px auto; 
 }
 
 .friendVisitBottom {
@@ -100,12 +104,12 @@
 }
 
 .friendVisitBottomLeft {
-    flex: 4;
+  flex: 4;
 }
 
 .friendVisitBottomRight {
-    width: 90%;
-    flex: 6;
+  width: 90%;
+  flex: 6;
 }
 
 .friendVisitBottomLeftTop {
