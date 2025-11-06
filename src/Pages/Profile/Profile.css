@@ -1,25 +1,33 @@
+/* Toàn bộ trang profile của người dùng */
 .profile{
   width: 100%;
 }
 
+/* Phần đầu của trang profile (ảnh cover + avatar) */
 .profileTop{
   width: 100%;
 }
 
+/* Khung chứa ảnh cover, căn giữa và định vị tương đối */
 .profileSub{
   width: 90%;
   margin: 0 auto;
   position: relative;
 }
 
+/* Ảnh cover của profile */
 .profileSubImg{
   width: 100%;
   height: 400px;
   object-fit: cover;
 }
+
+/* Khu vực chính chứa avatar và tên người dùng */
 .profileMain{
   position: relative;
 }
+
+/* Ảnh avatar tròn, chồng lên ảnh cover */
 .profileMainImg {
   width: 200px;
   height: 200px;
@@ -32,6 +40,7 @@
   border: 5px solid white;
 }
 
+/* Tên hiển thị của người dùng trong profile */
 .profileMainRightUserName{
   position: absolute;
   left: 23%;
@@ -40,12 +49,14 @@
   font-weight: bold;
 }
 
+/* Đường gạch ngang phân cách phần trên và phần nội dung chính */
 .profileHr{
     margin-top: 130px;
     width: 90%;
     margin: 130px auto 20px auto; 
 }
 
+/* Phần nội dung chính của profile, chia thành 2 cột trái - phải */
 .profileBottom {
   display: flex;
   justify-content: space-between; /* giữ khoảng cách đều */
@@ -54,15 +65,18 @@
   gap: 100px;
 }
 
+/* Cột bên trái của profile (giới thiệu, danh sách bạn bè) */
 .profileBottomLeft {
-    flex: 4;
+  flex: 4;
 }
 
+/* Cột bên phải của profile (các bài đăng của người dùng) */
 .profileBottomRight {
-    width: 80%;
-    flex: 5;
+  width: 80%;
+  flex: 5;
 }
 
+/* Khung chứa phần giới thiệu bản thân trong profile */
 .profileBottomLeftTop {
   background-color: #fff;
   padding: 15px;
@@ -71,25 +85,30 @@
   margin-bottom: 20px;
 }
 
+/* Tiêu đề các mục trong profile (vd: Giới thiệu, Bạn bè) */
 .titleProfileText {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 22px;
 }
 
+/* Mô tả ngắn về người dùng trong profile */
 .bio {
   font-size: 16px;
   color: #555;
   line-height: 1.5;
 }
+
+/* Khung hiển thị danh sách bạn bè trong profile */
 .profileBottomLeftBottom{
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
+/* Lưới danh sách bạn bè, hiển thị 3 cột */
 .ListFriends {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -97,25 +116,27 @@
   margin-top: 10px;
 }
 
+/* Một ô bạn bè trong danh sách */
 .ListFriend {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
+/* Ảnh đại diện của bạn bè trong danh sách */
 .FriendImg img {
   width: 150px;
   height: 150px;
   object-fit: cover;
   border-radius: 10px;
 }
-
+/* Tên bạn bè hiển thị dưới ảnh */
 .FriendName {
   margin-top: 5px;
   font-weight: 500;
   text-align: center;
 }
 
+/* Thông báo khi người dùng chưa có bài đăng nào trong profile */
 .noPost {
   display: flex;
   justify-content: center;

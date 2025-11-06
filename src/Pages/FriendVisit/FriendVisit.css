@@ -1,27 +1,33 @@
+/* Toàn bộ khung FriendVisit chiếm 100% chiều rộng trang */
 .friendVisit{
   width: 100%;
 }
 
+/* Toàn bộ khung FriendVisit chiếm 100% chiều rộng trang */
 .friendVisitTop{
   width: 100%;
 }
 
+/* Khung chứa ảnh bìa của bạn bè */
 .friendVisitSub{
   width: 90%;
   margin: 0 auto;
   position: relative;
 }
 
+/* Ảnh bìa */
 .friendVisitSubImg{
   width: 100%;
   height: 400px;
   object-fit: cover;
 }
 
+/* Khung bao quanh phần avatar và thông tin chính */
 .friendVisitMain {
   position: relative;
 }
 
+/* Ảnh đại diện (avatar tròn) */
 .friendVisitMainImg {
   width: 200px;
   height: 200px;
@@ -34,6 +40,7 @@
   border: 5px solid white;
 }
 
+/* Tên người dùng hiển thị cạnh avatar */
 .friendVisitMainRightUserName{
   position: absolute;
   left: 23%;
@@ -42,6 +49,7 @@
   font-weight: bold;
 }
 
+/* Vùng chứa hai nút "Thêm bạn bè" và "Nhắn tin" */
 .friendVisitMainBtns{
   display: flex;
   position: absolute;
@@ -50,6 +58,7 @@
   gap: 10px;
 }
 
+/* Nút "Nhắn tin" */
 .btnMessage{
   background-color: #0866ff;
   border: none;
@@ -66,11 +75,13 @@
   gap: 5px;
 }
 
+/* Hiệu ứng hover của nút "Nhắn tin" */
 .btnMessage:hover{
   background-color: #0866ff;
   opacity: 0.8;
 }
 
+/* Nút "Thêm bạn bè" / "Bạn bè" */
 .btnFriend{
   border: none;
   /* width: 120px; */
@@ -86,15 +97,19 @@
   gap: 5px;
 }
 
+/* Hiệu ứng hover cho nút "Thêm bạn bè" */
 .btnFriend:hover{
   opacity: 0.8;
 }
+
+/* Đường kẻ ngang phân cách phần trên và phần dưới */
 .friendVisitHr{
   margin-top: 130px;
   width: 90%;
   margin: 130px auto 20px auto; 
 }
 
+/* Khung chứa phần "Giới thiệu" và "Bài viết" */
 .friendVisitBottom {
   display: flex;
   justify-content: space-between;
@@ -103,15 +118,18 @@
   gap: 8%;
 }
 
+/* Cột bên trái (Giới thiệu + Danh sách bạn bè) */
 .friendVisitBottomLeft {
   flex: 4;
 }
 
+/* Cột bên phải (Bài viết) */
 .friendVisitBottomRight {
   width: 90%;
   flex: 6;
 }
 
+/* Hộp “Giới thiệu” */
 .friendVisitBottomLeftTop {
   background-color: #fff;
   padding: 15px;
@@ -120,25 +138,30 @@
   margin-bottom: 20px;
 }
 
+/* Tiêu đề phần trong khung*/
 .titlefriendVisitText {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 22px;
 }
 
+/* Đoạn mô tả giới thiệu */
 .bio {
   font-size: 16px;
   color: #555;
   line-height: 1.5;
 }
+
+/* Hộp chứa danh sách bạn bè */
 .friendVisitBottomLeftBottom{
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
+/* Danh sách bạn bè hiển thị theo dạng lưới (3 cột) */
 .ListFriends {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -146,12 +169,14 @@
   margin-top: 10px;
 }
 
+/* Mỗi ô bạn bè */
 .ListFriend {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Ảnh của từng bạn trong danh sách */
 .FriendImg img {
   width: 150px;
   height: 150px;
@@ -159,11 +184,14 @@
   border-radius: 10px;
 }
 
+/* Tên của bạn bè trong danh sách */
 .FriendName {
   margin-top: 5px;
   font-weight: 500;
   text-align: center;
 }
+
+/* Khi không có bài viết, hiển thị dòng thông báo */
 .noPost {
   display: flex;
   justify-content: center;

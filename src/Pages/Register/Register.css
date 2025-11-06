@@ -15,12 +15,12 @@
   display: flex;
 }
 /*Bên trái (phần giới thiệu) */
-.registerLeft{
+.registerLeft {
   width: 60%;
 }
 
 /*Bên phải (form đăng ký) */
-.registerRight{
+.registerRight {
   width: 40%;
 }
 
@@ -54,8 +54,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-  
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Tiêu đề trong form */
@@ -68,18 +67,18 @@
 }
 
 /* Nhóm nhập họ tên */
-.FullName{
+.FullName {
   width: 100%;
 }
 
-.FullNameContain{
+.FullNameContain {
   display: flex;
   gap: 10px;
   width: 100%;
 }
 
 /* Ô nhập liệu chung */
-.registerInput{
+.registerInput {
   height: 45px;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -89,7 +88,8 @@
 }
 
 /* Ô nhập họ và tên */
-.firstName, .lastName{
+.firstName,
+.lastName {
   flex: 1;
   height: 35px;
   border-radius: 10px;
@@ -97,11 +97,13 @@
   font-size: 16px;
   transition: border 0.2s ease;
   width: 30px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 /* Nhóm giới tính, ngày sinh, quốc gia */
-.genderGroupContain, .dobGroupContain, .countryContain{
+.genderGroupContain,
+.dobGroupContain,
+.countryContain {
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -110,7 +112,11 @@
 }
 
 /* Ô chọn giới tính, ngày, tháng, năm, quốc gia */
-.genderMan, .genderWoMen, .genderDiff, .selectBirthday, .selectcountry{
+.genderMan,
+.genderWoMen,
+.genderDiff,
+.selectBirthday,
+.selectcountry {
   border: 1px solid gray;
   width: 100%;
   padding: 5px;
@@ -150,4 +156,7 @@
 .buttonLogin:hover {
   opacity: 0.8;
   text-decoration: underline;
+}
+.OptionLogin {
+  text-align: center;
 }
