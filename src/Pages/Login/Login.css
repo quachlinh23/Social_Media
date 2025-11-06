@@ -14,11 +14,11 @@
   display: flex;
 }
 /* Phần bên trái (chứa logo, mô tả) */
-.loginLeft{
+.loginLeft {
   width: 60%;
 }
 /* Phần bên phải (chứa form đăng nhập) */
-.loginRight{
+.loginRight {
   width: 40%;
 }
 /* Cả hai phần trái và phải đều dùng flexbox để căn giữa nội dung */
@@ -41,7 +41,7 @@
   font-size: 24px;
 }
 /* Khung bao quanh form đăng nhập */
-.loginBox{
+.loginBox {
   height: 340px;
   padding: 20px;
   background-color: white;
@@ -51,7 +51,7 @@
   justify-content: space-between;
 }
 /* Tiêu đề form đăng nhập*/
-.titleLogin{
+.titleLogin {
   font-size: 35px;
   text-align: center;
   font-weight: 700;
@@ -59,7 +59,7 @@
   margin-bottom: 5px;
 }
 /* Ô nhập liệu (tài khoản, mật khẩu) */
-.loginInput{
+.loginInput {
   height: 45px;
   border-radius: 10px;
   border: 1px solid gray;
@@ -67,16 +67,16 @@
   padding-left: 20px;
 }
 /* Khi focus (nhấn vào input), bỏ viền mặc định màu xanh của trình duyệt */
-.loginInput:focus{
+.loginInput:focus {
   outline: none;
 }
 /* Dòng thông báo lỗi (ví dụ: sai mật khẩu) */
-.errorForm{
+.errorForm {
   color: red;
   font-weight: bold;
 }
 /* Nút đăng nhập */
-.loginButton{
+.loginButton {
   height: 50px;
   border-radius: 10px;
   border: none;
@@ -92,13 +92,14 @@
   opacity: 0.8;
 }
 /* Vùng chứa hai nút lựa chọn: Quên mật khẩu và Đăng ký */
-.TextChoice{
+.OptionRegister {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 /* Hai nút dạng text (liên kết) */
-.forgotButton, .registerButton{
+.forgotButton,
+.registerButton {
   text-align: center;
   color: #0866ff;
   font-size: 17px;
@@ -106,7 +107,8 @@
   cursor: pointer;
 }
 /* Hiệu ứng hover: đổi màu nhẹ + gạch chân */
-.forgotButton:hover, .registerButton:hover{
+.forgotButton:hover,
+.registerButton:hover {
   color: #0866ff;
   opacity: 0.8;
   text-decoration: underline;
