@@ -19,7 +19,7 @@ export default function FriendVisit() {
   const FriendInfo = Users.find((us) => us.id === Number(id));
   // Trạng thái quan hệ bạn bè
   const [friendState, setFriendState] = useState(
-    FriendInfo.friends.includes(user)
+    FriendInfo.friends.includes(user.id)
   );
   // Trạng thái hiển thị cửa sổ chat chính
   const [openChat, setOpenChat] = useState(false);
