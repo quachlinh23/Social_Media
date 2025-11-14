@@ -93,7 +93,8 @@
 }
 
 /* Hiệu ứng hover cho tên + ngày */
-.postdetailUserName:hover,.postdetailDate:hover{
+.postdetailUserName:hover,
+.postdetailDate:hover {
   text-decoration: underline;
 }
 
@@ -134,25 +135,28 @@
   padding: 0px 0;
 }
 
-.postdetailBottomTop{
+.postdetailBottomTop {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
-.postdetailBottomTopRight{
+.postdetailBottomTopRight {
   display: flex;
   gap: 10px;
 }
 
 /* Các dòng thông tin lượt thích, bình luận, chia sẻ */
-.postdetailLikeCounter, .postdetailCommentText,
+.postdetailLikeCounter,
+.postdetailCommentText,
 .postdetailCommentText {
   cursor: pointer;
 }
-.postdetailLikeCounter:hover, .postdetailCommentText:hover,
-.postdetailCommentText:hover, .CommentItemUsername:hover{
+.postdetailLikeCounter:hover,
+.postdetailCommentText:hover,
+.postdetailCommentText:hover,
+.CommentItemUsername:hover {
   text-decoration: underline;
-
 }
 
 /* Nút like/comment/share */
@@ -174,7 +178,7 @@
 }
 
 /* ----- Danh sách bình luận ----- */
-.postdetailListComment{
+.postdetailListComment {
   margin-top: 15px;
 }
 
@@ -185,8 +189,10 @@
   margin-bottom: 15px;
 }
 
-.CommentItemProfileImg, .CommentItemProfileImg,
-.postdetailProfileImg, .postDetailUserImg{
+.CommentItemProfileImg,
+.CommentItemProfileImg,
+.postdetailProfileImg,
+.postDetailUserImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -238,7 +244,7 @@
   border-color: #1877f2;
 }
 
-.iconSend{
+.iconSend {
   color: #0062d2;
   cursor: pointer;
 }

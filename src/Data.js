@@ -2,8 +2,8 @@
 export const Posts = [
   {
     id: 1,
-    desc: "Love all my friends",
-    photo: "/assets/Post/Post1.jpg",
+    desc: "Anh ơi cố lên 12 12!!!",
+    photo: "",
     date: "5 phút",
     userId: 1,
     like: 33,
@@ -87,6 +87,15 @@ export const Posts = [
     photo: "/assets/Post/Post10.jpg",
     date: "50 phút",
     userId: 10,
+    like: 28,
+    share: 5,
+  },
+  {
+    id: 11,
+    desc: "Anh ơi cố lên!!!",
+    photo: "",
+    date: "50 phút",
+    userId: 1,
     like: 28,
     share: 5,
   },

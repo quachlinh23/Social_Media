@@ -9,6 +9,8 @@ export const useAuth = () => useContext(AuthContext);
 
 // Provider bao quanh toàn ứng dụng, cung cấp user, login và logout
 export const AuthProvider = ({ children }) => {
+  // Khởi tạo state 'user' để lưu thông tin người dùng
+  // Sử dụng lazy initializer (hàm trong useState) để chỉ chạy 1 lần khi component mount
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
@@ -20,10 +22,12 @@ export const AuthProvider = ({ children }) => {
       return { success: false, message: "Vui lòng nhập đầy đủ thông tin" };
     }
 
+    //Tìm kiếm thông tin user đăng nhập
     const foundUser = Users.find(
       (us) => us.email.toLowerCase() === email.toLowerCase()
     );
 
+    //Nếu không tìm thấy thông tin
     if (!foundUser || foundUser.password !== password) {
       return {
         success: false,
@@ -31,6 +35,7 @@ export const AuthProvider = ({ children }) => {
       };
     }
 
+    //Nếu tìm thấy thì lưu thông tin vào localstorage
     setUser(foundUser);
     localStorage.setItem("user", JSON.stringify(foundUser));
     return { success: true };
@@ -39,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   // Hàm logout, xóa user khỏi state và localStorage
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user");
+    localStorage.removeItem("user"); //Xóa thông tin user khỏi localstorage
   };
 
   // Cung cấp value cho toàn bộ component con

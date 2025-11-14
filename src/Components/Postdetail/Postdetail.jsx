@@ -121,8 +121,10 @@ export default function Postdetail({
           </div>
 
           <span className="postText">{PostDetail.desc}</span>
-          <img className="postImg" src={PostDetail.photo} alt="" />
-          <hr className="postdetailHr" />
+          {PostDetail.photo && (
+            <img className="postImg" src={PostDetail.photo} alt="" />
+          )}
+          {/* <hr className="postdetailHr" /> */}
           {/* Like, comment, share */}
           <div className="postdetailBottom">
             <div className="postdetailBottomTop">
