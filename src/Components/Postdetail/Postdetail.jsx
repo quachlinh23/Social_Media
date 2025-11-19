@@ -124,6 +124,7 @@ export default function Postdetail({
           {PostDetail.photo && (
             <img className="postImg" src={PostDetail.photo} alt="" />
           )}
+
           {/* <hr className="postdetailHr" /> */}
           {/* Like, comment, share */}
           <div className="postdetailBottom">

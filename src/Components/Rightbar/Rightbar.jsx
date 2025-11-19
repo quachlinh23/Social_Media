@@ -36,7 +36,7 @@ export default function Rightbar() {
               <span className="birthdayText">
                 Hôm nay là sinh nhật của{" "}
                 <strong>{ListBirthday[0].fullname}</strong>
-                {ListBirthday.length < 2 && <> .</>}
+                {ListBirthday.length <= 1 && <>.</>}
                 {ListBirthday.length > 1 && (
                   <>
                     <pre>
